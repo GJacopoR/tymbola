@@ -1,5 +1,7 @@
+import Card from "../../components/card";
+
 function PlayerView() {
-    return <>PlayerView here!</>
+    return <Card />
 }
 
 export default PlayerView;
