@@ -1,22 +1,31 @@
 import { Link } from "react-router-dom";
 import classes from './home.module.scss'
+import CardSelectorModal from "../../components/card-selector-modal";
+import Button from "../../components/button";
 
-function Home() {
+interface HomeComponentProps{
+    onModalOpen: (e: React.MouseEvent<HTMLButtonElement>) => void
+    // onModalOpen: () => {
+    //     type: "modal/toggle";
+    // }
+}
+
+function Home({onModalOpen}:HomeComponentProps) {
+
     return <>
 	{/* <Route path="users/:id" element={<Users />} /> */}
-    <section>
-        <button className={classes.button}>
+    <section className={classes.buttons}>
+        <Button className={classes.button} children={
             <Link to={'/caller'} className={classes.link}>
                 Caller
             </Link>
-        </button>
+        }/>
+
+        <Button className={classes.button} label={"Player"} onClick={onModalOpen} />
     </section>
+
     <section>
-        <button className={classes.button}>
-            <Link to={'/constructor'} className={classes.link}>
-                Player
-            </Link>
-        </button>
+        <CardSelectorModal />
     </section>
 
     </>
