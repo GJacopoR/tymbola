@@ -2,13 +2,13 @@ import Button from "../../components/button";
 import classes from "./caller-view.module.scss"
 
 interface CallerViewProps {
+    history: number[]
     onCallClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
     onRepeatClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
-    history: number[]
-    repository: number[]
+    repository?: number[]
 }
 
-function CallerView({onCallClick, onRepeatClick, history}:CallerViewProps) {
+function CallerView({history, onCallClick, onRepeatClick}:CallerViewProps) {
     return <section className={classes.callerSection}>
             <ol className={classes.historyList}>
                 {history.map((number) => 

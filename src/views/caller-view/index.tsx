@@ -10,35 +10,42 @@ function CallerView(){
 
     const dispatch = useAppDispatch()
 
-    const history = useSelector(caller.selectHistory)
+    const history :number[] = useSelector(caller.selectHistory)
 
-    const repository = useSelector(caller.selectRepository)
+    const repository :number[] = useSelector(caller.selectRepository)
 
-    const callNumber = (number:string) => {
-        console.log(number)
+    const callNumber = (number:string):void => {
         utterance.text = number
-        utterance.voice = window.speechSynthesis.getVoices()[0]
-        utterance.rate = 0.2
-        utterance.pitch = 0
+        utterance.voice = window.speechSynthesis.getVoices()[21]
+        utterance.rate = 0.25
+        utterance.pitch = 1
+        utterance.volume = 1
     
         window.speechSynthesis.speak(utterance)
     }
 
     useEffect(() => {
-        callNumber(String(history[history.length - 1]))
+        history.length && callNumber(String(history[history.length - 1]))
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history])
 
-    const handleExtract = () => {
+    const handleExtract = ():void => {
         dispatch(caller.extract());
     }
 
-    const handleRepeat = () => {
+    const handleRepeat = ():void => {
         const number = String(history[history.length - 1])
-        callNumber(`${number}, ${number[0]}, ${number[1]}`);
+        // const repeatedString :string = [number, number.split('').join(', ')].join(', ')
+        const repeatedString :string = number.length === 1 ? number : `${number}, ${number[0]}, ${number[1]}`
+
+        callNumber(repeatedString);
     }
 
-    return <CallerViewComponent onCallClick={handleExtract} onRepeatClick={handleRepeat} history={history} repository={repository} />
+    return <CallerViewComponent 
+        history={history}
+        onCallClick={handleExtract}
+        onRepeatClick={handleRepeat}
+        repository={repository} />
 }
 
 export default CallerView;

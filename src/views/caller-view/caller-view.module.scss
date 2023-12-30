@@ -8,8 +8,9 @@
     .historyList{
         display: flex;
         list-style-type: none;
-        padding: 0;
-        width: 100vw;
+        padding: 1rem 0;
+        width: 90vw;
+        height: 2.5rem;
         overflow-y: scroll;
 
         .historyNumber{
@@ -17,7 +18,6 @@
             color: red;
             font-size: 1.5rem;
             font-weight: 900;
-            font-family: 'Rubik Maps', serif;
         }
     }
 
@@ -26,7 +26,7 @@
         justify-content: center;
         align-items: center;
         background-color: bisque; // burlywood;
-        border: solid 3px darkgoldenrod;
+        border: solid 6px darkgoldenrod;
         border-radius: 50%;
         color: red;
         font-size: 5rem;
@@ -34,6 +34,5 @@
         margin: 0.5rem 0;
         width: 8rem;
         height: 8rem;
-        font-family: serif;
     }
 }
