@@ -7,6 +7,10 @@ import { useEffect } from 'react';
 function CallerView(){
 
     const utterance = new SpeechSynthesisUtterance()
+    utterance.voice = window.speechSynthesis.getVoices()[21]
+    utterance.rate = 0.25
+    utterance.pitch = 1
+    utterance.volume = 1
 
     const dispatch = useAppDispatch()
 
@@ -16,11 +20,7 @@ function CallerView(){
 
     const callNumber = (number:string):void => {
         utterance.text = number
-        utterance.voice = window.speechSynthesis.getVoices()[21]
-        utterance.rate = 0.25
-        utterance.pitch = 1
-        utterance.volume = 1
-    
+        
         window.speechSynthesis.speak(utterance)
     }
 
