@@ -14,18 +14,26 @@ function CallerView(){
 
     const dispatch = useAppDispatch()
 
-    const history :number[] = useSelector(caller.selectHistory)
+    const history:caller.TombolaNumber[] = useSelector(caller.selectHistory);
 
-    const repository :number[] = useSelector(caller.selectRepository)
+    const isSmorfiaMode:boolean = useSelector(caller.selectIsSmorfiaMode);
+
+    const repository:caller.TombolaNumber[] = useSelector(caller.selectRepository);
+
+    const lastTombolaNumber = history[history.length - 1];
 
     const callNumber = (number:string):void => {
-        utterance.text = number
+        utterance.text = number;
         
-        window.speechSynthesis.speak(utterance)
+        window.speechSynthesis.speak(utterance);
     }
 
     useEffect(() => {
-        history.length && callNumber(String(history[history.length - 1]))
+        if(lastTombolaNumber){
+            const string = String(lastTombolaNumber.number);
+            const smorfiaString = `${lastTombolaNumber.pronunciation},  ${lastTombolaNumber.smorfia_meaning}`;
+            history.length && callNumber(isSmorfiaMode ? smorfiaString : string);
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history])
 
@@ -34,17 +42,23 @@ function CallerView(){
     }
 
     const handleRepeat = ():void => {
-        const number = String(history[history.length - 1])
-        // const repeatedString :string = [number, number.split('').join(', ')].join(', ')
-        const repeatedString :string = number.length === 1 ? number : `${number}, ${number[0]}, ${number[1]}`
+        const repeatedString:string = lastTombolaNumber.number <= 9 
+        ? `${lastTombolaNumber.number}, ${lastTombolaNumber.smorfia_meaning}` 
+        : `${lastTombolaNumber.number}, ${String(lastTombolaNumber.number)[0]}, ${String(lastTombolaNumber.number)[1]}, ${lastTombolaNumber.smorfia_meaning}`
 
         callNumber(repeatedString);
     }
 
+    const handleSwitch = ():void => {
+        dispatch(caller.switchIsSmorfiaMode())
+    }
+
     return <CallerViewComponent 
         history={history}
+        isSmorfiaMode={isSmorfiaMode}
         onCallClick={handleExtract}
         onRepeatClick={handleRepeat}
+        onSwitchClick={handleSwitch}
         repository={repository} />
 }
 

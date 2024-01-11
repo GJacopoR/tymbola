@@ -1,25 +1,37 @@
 import BackButton from "../../components/back-button";
 import Button from "../../components/button";
 import classes from "./caller-view.module.scss"
+import { TombolaNumber } from "../../slice/caller-slice";
+import { InputHTMLAttributes } from "react";
+import SliderButton from "../../components/slider-button";
 
 interface CallerViewProps {
-    history: number[]
+    history: TombolaNumber[],
+    isSmorfiaMode: boolean,
     onCallClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
     onRepeatClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
-    repository?: number[]
+    onSwitchClick: (e: InputHTMLAttributes<HTMLInputElement>) => void,
+    repository?: TombolaNumber[]
 }
 
-function CallerView({history, onCallClick, onRepeatClick}:CallerViewProps) {
+function CallerView({history, isSmorfiaMode, onCallClick, onRepeatClick, onSwitchClick}:CallerViewProps) {
     return <section className={classes.callerSection}>
-            <BackButton />
+            <nav>
+                <BackButton />
+                <SliderButton
+                    checkboxId={'smorfiaModeSwitch'}
+                    isChecked={isSmorfiaMode}
+                    label={'Smorfia mode'}
+                    onSwitchClick={onSwitchClick} />
+            </nav>
             <ol className={classes.historyList}>
-                {history.map((number) => 
-                <li className={classes.historyNumber} key={number}>
-                    {`${number}${history.indexOf(number) === history.length -1 ? '' : ','}`}
+                {history.map((tombolaNumber) => 
+                <li className={classes.historyNumber} key={tombolaNumber?.number}>
+                    {`${tombolaNumber.number}${history.indexOf(tombolaNumber) === history.length -1 ? '' : ','}`}
                 </li>)}
             </ol>
             <header className={classes.lastExtractedNumber}>
-                {history && history[history.length - 1]}
+                {history && history[history.length - 1]?.number}
             </header>
             <div className={classes.buttonsContainer}>
                 <Button className={classes.button} label="Call" onClick={onCallClick} />

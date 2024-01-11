@@ -1,0 +1,109 @@
+{
+    "numbers" : {
+        "1":{
+            "number" : 1,
+            "pronunciation" : "Une",
+            "smorfia_meaning" : "L'Italia"
+        },
+        "2":{
+            "number" : 2,
+            "pronunciation" : "Roie",
+            "smorfia_meaning" : "'A peccerèll, la bambina"
+        },
+        "3":{
+            "number" : 3,
+            "pronunciation" : "Ttre",
+            "smorfia_meaning" : "'A iàtta, il gatto"
+        },
+        "4":{
+            "number" : 4,
+            "pronunciation" : "Quatt",
+            "smorfia_meaning" : "'O puórc, il porco"
+        },
+        "5":{
+            "number" : 5,
+            "pronunciation" : "Cinck",
+            "smorfia_meaning" : "'A mana, la mano"
+        },
+        "6":{
+            "number" : 6,
+            "pronunciation" : "Seie",
+            "smorfia_meaning" : "'Chéll ca uard ndérr, quella che guarda a terra"
+        },
+        "7":{
+            "number" : 7,
+            "pronunciation" : "Sètt",
+            "smorfia_meaning" : "'O vasétt, il vasetto"
+        },
+        "8":{
+            "number" : 8,
+            "pronunciation" : "òtte",
+            "smorfia_meaning" : "'A Marònn, la Madonna"
+        },
+        "9":{
+            "number" : 9,
+            "pronunciation" : "Nòve",
+            "smorfia_meaning" : "'A figliàt, la figliolanza"
+        },
+        "10":{
+            "number" : 10,
+            "pronunciation" : "Diece",
+            "smorfia_meaning" : "'E fasùl, i fagioli"
+        },
+        "11":{
+            "number" : 11,
+            "pronunciation" : "ùnnece",
+            "smorfia_meaning" : "'E sùrice, i topini"
+        },
+        "12":{
+            "number" : 12,
+            "pronunciation" : "Dórece",
+            "smorfia_meaning" : "'E surdàt, i soldati"
+        },
+        "13":{
+            "number" : 13,
+            "pronunciation" : "Trìrece",
+            "smorfia_meaning" : "Sant'Antonie, Sant'Antonio"
+        },
+        "14":{
+            "number" : 14,
+            "pronunciation" : "Quattuórdece",
+            "smorfia_meaning" : "'O mbriàc, l'ubriaco'"
+        },
+        "15":{
+            "number" : 15,
+            "pronunciation" : "Quìnnece",
+            "smorfia_meaning" : "'O uaglióne, il ragazzo"
+        },
+        "16":{
+            "number" : 16,
+            "pronunciation" : "Sìrece",
+            "smorfia_meaning" : "'O cul, il culo"
+        },
+        "17":{
+            "number" : 17,
+            "pronunciation" : "Dicessètte",
+            "smorfia_meaning" : "'A disgràzie, la sfortuna"
+        },
+        "18":{
+            "number" : 18,
+            "pronunciation" : "Diciòtt",
+            "smorfia_meaning" : "'O sàng, il sangue"
+        },
+        "19":{
+            "number" : 19,
+            "pronunciation" : "Dicennòv",
+            "smorfia_meaning" : "'A resàt, la risata"
+        },
+        "20":{
+            "number" : 20,
+            "pronunciation" : "Vint",
+            "smorfia_meaning" : "'A fèst, la festa"
+        },
+        "21":{
+            "number" : 21,
+            "pronunciation" : "Vintùn",
+            "smorfia_meaning" : "'A fèmmena annura, la donna nuda"
+        }
+    }
+}

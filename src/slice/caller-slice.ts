@@ -1,21 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store';
+import { numbers } from '../assets/smorfia.json'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 
-const array:number[] = Array(90);
+// const array:number[] = Array(90);
 
-for (let i = 0; i < 90; i++) {
-    i === 0 ? array[0] = 1 : array[i] = array[i-1] + 1
-} 
+// for (let i = 0; i < 90; i++) {
+//     i === 0 ? array[0] = 1 : array[i] = array[i-1] + 1
+// } 
+
+export interface TombolaNumber {
+  number: number,
+  pronunciation:string,
+  smorfia_meaning: string
+}
 
 export interface CallerSlice {
-    history: number[]
-    repository: number[]
+    history: TombolaNumber[],
+    isSmorfiaMode: boolean,
+    repository: TombolaNumber[]
 }   
+
+const repository:TombolaNumber[] = [...Object.values(numbers)]
 
 const initialState: CallerSlice = {
     history: [],
-    repository: array
+    isSmorfiaMode: true,
+    repository: repository
 }
 
 export const callerSlice = createSlice({
@@ -23,10 +34,15 @@ export const callerSlice = createSlice({
   initialState,
   reducers: {
     extract: (state) => {
-        const position = Math.floor(Math.random() * (state.repository.length +1))
-        const extracted = state.repository.splice(position, 1)[0]
-        extracted && state.history.push(extracted)
+      const position = Math.floor(Math.random() * (state.repository.length +1))
+      const extracted:TombolaNumber = state.repository.splice(position, 1)[0]
+      extracted && state.history.push(extracted)
     },
+
+    switchIsSmorfiaMode: (state) => {
+      state.isSmorfiaMode = !state.isSmorfiaMode
+    }
+
     // decrement: (state) => {
     //   state.value -= 1
     // },
@@ -36,10 +52,12 @@ export const callerSlice = createSlice({
   },
 })
 
-export const { extract } = callerSlice.actions
+export const { extract, switchIsSmorfiaMode } = callerSlice.actions;
 
-export const selectHistory = (state: RootState) => state.caller.history
+export const selectHistory = (state: RootState) => state.caller.history;
 
-export const selectRepository = (state: RootState) => state.caller.repository
+export const selectIsSmorfiaMode = (state: RootState) => state.caller.isSmorfiaMode;
 
-export default callerSlice.reducer
+export const selectRepository = (state: RootState) => state.caller.repository;
+
+export default callerSlice.reducer;
