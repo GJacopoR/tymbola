@@ -3,12 +3,6 @@ import { RootState } from '../store';
 import { numbers } from '../assets/smorfia.json'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 
-// const array:number[] = Array(90);
-
-// for (let i = 0; i < 90; i++) {
-//     i === 0 ? array[0] = 1 : array[i] = array[i-1] + 1
-// } 
-
 export interface TombolaNumber {
   number: number,
   pronunciation:string,

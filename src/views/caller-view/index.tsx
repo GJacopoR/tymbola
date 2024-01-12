@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 function CallerView(){
 
-    const utterance = new SpeechSynthesisUtterance()
+    const utterance:SpeechSynthesisUtterance = new SpeechSynthesisUtterance()
     utterance.voice = window.speechSynthesis.getVoices()[21]
     utterance.rate = 0.25
     utterance.pitch = 1
@@ -20,7 +20,7 @@ function CallerView(){
 
     const repository:caller.TombolaNumber[] = useSelector(caller.selectRepository);
 
-    const lastTombolaNumber = history[history.length - 1];
+    const lastTombolaNumber:caller.TombolaNumber = history[history.length - 1];
 
     const callNumber = (number:string):void => {
         utterance.text = number;
