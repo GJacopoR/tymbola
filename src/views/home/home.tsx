@@ -16,7 +16,7 @@ function Home({onModalOpen}:HomeComponentProps) {
 	{/* <Route path="users/:id" element={<Users />} /> */}
     <section className={classes.buttons}>
         <Button className={classes.button} children={
-            <Link to={'/caller'} className={classes.link}>
+            <Link to={'/tymbola/caller'} className={classes.link}>
                 Caller
             </Link>
         }/>

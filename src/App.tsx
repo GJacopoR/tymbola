@@ -10,10 +10,10 @@ function App() {
   return (
     <BrowserRouter>
 		<Routes>
-			<Route path="/" element={<Home />} />
-      <Route path="/caller" element={<CallerView />} />
-      <Route path="/constructor" element={<CardConstructor />} />
-      <Route path="/player" element={<PlayerView />} />
+			<Route path="/tymbola/" element={<Home />} />
+      <Route path="/tymbola/caller" element={<CallerView />} />
+      <Route path="/tymbola/constructor" element={<CardConstructor />} />
+      <Route path="/tymbola/player" element={<PlayerView />} />
 		</Routes>
 	</BrowserRouter>
   )
