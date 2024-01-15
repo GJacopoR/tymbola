@@ -1,7 +1,59 @@
 .card{
     display: grid;
-    grid-template-columns: repeat(15, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    background-color: burlywood;
+    border: solid 1px burlywood;
+    border-radius: 3px;
+
+    .boxContainer{
+        display: flex;
+
+        .boxLabel{
+            width: 1.1rem;
+            height: 1.1rem;
+            background-color: blanchedalmond;
+            border: solid 2px burlywood;
+            border-radius: 3px;
+            color: darkslategray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            p{
+                z-index: 2;
+                margin: 0;
+            }
+        }
+        
+        .boxLabelChecked{
+            position: relative;
+            color: red;
+            // font-family: 'Rubik Maps', serif;
+            font-weight: bold;
+        }
+
+        .boxLabelChecked::after{
+            content: '';
+            z-index: 1;
+            position: absolute;
+            background-color: bisque;
+            border: solid 2px red;
+            border-radius: 50%;
+            width: 0.95rem;
+            height: 0.95rem;
+        }
+
+        .box{
+            position: relative;
+            display: none;
+        }
+
+        .box::after{
+            content:'2';
+            position: absolute;
+        }
+    }
 }

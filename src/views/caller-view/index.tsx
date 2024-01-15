@@ -1,26 +1,37 @@
 import CallerViewComponent from './caller-view';
 import * as caller from '../../slice/caller-slice'
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../slice/hooks';
+import { useAppDispatch, useAppSelector } from '../../slice/hooks';
 import { useEffect } from 'react';
 
 function CallerView(){
 
     const utterance:SpeechSynthesisUtterance = new SpeechSynthesisUtterance()
-    utterance.voice = window.speechSynthesis.getVoices()[21]
-    utterance.rate = 0.25
+    utterance.voice = window.speechSynthesis.getVoices()[57] // 21 for Luca, 57 for Google italiano
+    utterance.rate = 0.9 // 0.25 only for Luca
     utterance.pitch = 1
     utterance.volume = 1
 
+    console.log(window.speechSynthesis.getVoices())
+
     const dispatch = useAppDispatch()
 
-    const history:caller.TombolaNumber[] = useSelector(caller.selectHistory);
+    const history:caller.TombolaNumber[] = useAppSelector(caller.selectHistory);
 
-    const isSmorfiaMode:boolean = useSelector(caller.selectIsSmorfiaMode);
+    const isSmorfiaMode:boolean = useAppSelector(caller.selectIsSmorfiaMode);
 
-    const repository:caller.TombolaNumber[] = useSelector(caller.selectRepository);
+    const repository:caller.TombolaNumber[] = useAppSelector(caller.selectRepository);
 
     const lastTombolaNumber:caller.TombolaNumber = history[history.length - 1];
+
+    // const callerCards = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]]
+
+    const callerCards = [Array.from({length: 15}, (_, i) => i + 1),
+        Array.from({length: 15}, (_, i) => i + 16),
+        Array.from({length: 15}, (_, i) => i + 31),
+        Array.from({length: 15}, (_, i) => i + 46),
+        Array.from({length: 15}, (_, i) => i + 61),
+        Array.from({length: 15}, (_, i) => i + 76),
+    ]
 
     const callNumber = (number:string):void => {
         utterance.text = number;
@@ -54,6 +65,7 @@ function CallerView(){
     }
 
     return <CallerViewComponent 
+        callerCards={callerCards}
         history={history}
         isSmorfiaMode={isSmorfiaMode}
         onCallClick={handleExtract}

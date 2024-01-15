@@ -4,8 +4,10 @@ import classes from "./caller-view.module.scss"
 import { TombolaNumber } from "../../slice/caller-slice";
 import { InputHTMLAttributes } from "react";
 import SliderButton from "../../components/slider-button";
+import CallerCard from "../../components/caller-card";
 
 interface CallerViewProps {
+    callerCards: number[][],
     history: TombolaNumber[],
     isSmorfiaMode: boolean,
     onCallClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
@@ -14,7 +16,7 @@ interface CallerViewProps {
     repository?: TombolaNumber[]
 }
 
-function CallerView({history, isSmorfiaMode, onCallClick, onRepeatClick, onSwitchClick}:CallerViewProps) {
+function CallerView({callerCards, history, isSmorfiaMode, onCallClick, onRepeatClick, onSwitchClick}:CallerViewProps) {
     return <section className={classes.callerSection}>
             <nav>
                 <BackButton />
@@ -36,6 +38,9 @@ function CallerView({history, isSmorfiaMode, onCallClick, onRepeatClick, onSwitc
             <div className={classes.buttonsContainer}>
                 <Button className={classes.button} label="Call" onClick={onCallClick} />
                 <Button className={classes.button} label="Repeat" onClick={onRepeatClick} />
+            </div>
+            <div className={classes.callerCardsContainer}>
+                {callerCards.map(callerCard => <CallerCard callerCard={callerCard}/>)}
             </div>
         </section>
 }

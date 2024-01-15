@@ -5,9 +5,6 @@ import Button from "../../components/button";
 
 interface HomeComponentProps{
     onModalOpen: (e: React.MouseEvent<HTMLButtonElement>) => void
-    // onModalOpen: () => {
-    //     type: "modal/toggle";
-    // }
 }
 
 function Home({onModalOpen}:HomeComponentProps) {
