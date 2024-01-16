@@ -10,10 +10,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        .restartButton{
-            width: 100%;
-        }
     }   
 
     .historyList{
@@ -63,5 +59,11 @@
         grid-template-rows: repeat(3, 1fr);
         grid-column-gap: 5px;
         grid-row-gap: 3px;
+    }
+
+    .restartButton{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
 }

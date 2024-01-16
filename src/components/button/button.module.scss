@@ -11,3 +11,9 @@
     font-family: 'Rubik Maps', serif;
     white-space: pre-wrap;
 }
+
+.defaultButton[disabled], .defaultButton:disabled{
+    background-color: bisque; // burlywood;
+    border: solid 3px burlywood;
+    color: lightcoral;
+}
