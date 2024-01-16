@@ -12,11 +12,20 @@ interface CallerViewProps {
     isSmorfiaMode: boolean,
     onCallClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
     onRepeatClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
+    onRestartClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
     onSwitchClick: (e: InputHTMLAttributes<HTMLInputElement>) => void,
     repository?: TombolaNumber[]
 }
 
-function CallerView({callerCards, history, isSmorfiaMode, onCallClick, onRepeatClick, onSwitchClick}:CallerViewProps) {
+function CallerView({
+    callerCards,
+    history,
+    isSmorfiaMode,
+    onCallClick,
+    onRepeatClick,
+    onRestartClick,
+    onSwitchClick}:CallerViewProps){
+
     return <section className={classes.callerSection}>
             <nav>
                 <BackButton />
@@ -26,6 +35,7 @@ function CallerView({callerCards, history, isSmorfiaMode, onCallClick, onRepeatC
                     label={'Smorfia mode'}
                     onSwitchClick={onSwitchClick} />
             </nav>
+                <Button className={classes.restartButton} label="REPLAY" onClick={onRestartClick} />
             <ol className={classes.historyList}>
                 {history.map((tombolaNumber) => 
                 <li className={classes.historyNumber} key={tombolaNumber?.number}>

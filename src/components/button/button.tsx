@@ -10,7 +10,7 @@ interface ButtonProps {
 
 function Button({children, className, label, onClick, style}:ButtonProps){
     return <button
-        className={className ? className : classes.defaultButton}
+        className={className ? classes.defaultButton + ' ' + className : classes.defaultButton}
         onClick={onClick}
         style={style}>
             {children} {label}

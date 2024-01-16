@@ -33,6 +33,11 @@ export const callerSlice = createSlice({
       extracted && state.history.push(extracted)
     },
 
+    restart: (state) => {
+      state.repository = repository;
+      state.history = [];
+    },
+
     switchIsSmorfiaMode: (state) => {
       state.isSmorfiaMode = !state.isSmorfiaMode
     }
@@ -46,7 +51,7 @@ export const callerSlice = createSlice({
   },
 })
 
-export const { extract, switchIsSmorfiaMode } = callerSlice.actions;
+export const { extract, restart, switchIsSmorfiaMode } = callerSlice.actions;
 
 export const selectHistory = (state: RootState) => state.caller.history;
 

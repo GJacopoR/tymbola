@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import classes from './home.module.scss'
 import CardSelectorModal from "../../components/card-selector-modal";
 import Button from "../../components/button";
+import Header from "../../components/header";
 
 interface HomeComponentProps{
     onModalOpen: (e: React.MouseEvent<HTMLButtonElement>) => void
@@ -10,21 +11,21 @@ interface HomeComponentProps{
 function Home({onModalOpen}:HomeComponentProps) {
 
     return <>
-	{/* <Route path="users/:id" element={<Users />} /> */}
-    <section className={classes.buttons}>
-        <Button className={classes.button} children={
+        {/* <Route path="users/:id" element={<Users />} /> */}
+        <header>
+            <Header />
+        </header>
+        <main className={classes.buttons}>
             <Link to={'/tymbola/caller'} className={classes.link}>
-                Caller
+                <Button className={classes.button} label={'Caller'}/>
             </Link>
-        }/>
 
-        <Button className={classes.button} label={"Player"} onClick={onModalOpen} />
-    </section>
+            <Button className={classes.button} label={"Player"} onClick={onModalOpen} />
+        </main>
 
-    <section>
-        <CardSelectorModal />
-    </section>
-
+        <section>
+            <CardSelectorModal />
+        </section>
     </>
 }
 
