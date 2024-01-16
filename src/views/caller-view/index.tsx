@@ -1,5 +1,6 @@
 import CallerViewComponent from './caller-view';
 import * as caller from '../../slice/caller-slice'
+import * as modal from '../../slice/modal-slice';
 import { useAppDispatch, useAppSelector } from '../../slice/hooks';
 import { useEffect } from 'react';
 
@@ -71,12 +72,13 @@ function CallerView(){
         callNumber(repeatedString);
     }
 
-    const handleRestart = ():void => {
-        dispatch(caller.restart())
+    const handleModalOpen = ():void => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        dispatch(modal.toggle());
     }
 
     const handleSwitch = ():void => {
-        dispatch(caller.switchIsSmorfiaMode())
+        dispatch(caller.switchIsSmorfiaMode());
     }
 
     return <CallerViewComponent 
@@ -85,7 +87,7 @@ function CallerView(){
         isSmorfiaMode={isSmorfiaMode}
         onCallClick={handleExtract}
         onRepeatClick={handleRepeat}
-        onRestartClick={handleRestart}
+        onRestartClick={handleModalOpen}
         onSwitchClick={handleSwitch}
         repository={repository} />
 }

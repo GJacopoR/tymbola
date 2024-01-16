@@ -5,6 +5,7 @@ import { TombolaNumber } from "../../slice/caller-slice";
 import { InputHTMLAttributes } from "react";
 import SliderButton from "../../components/slider-button";
 import CallerCard from "../../components/caller-card";
+import RestartModal from "../../components/restart-modal";
 
 interface CallerViewProps {
     callerCards: number[][],
@@ -35,7 +36,6 @@ function CallerView({
                     label={'Smorfia mode'}
                     onSwitchClick={onSwitchClick} />
             </nav>
-                <Button className={classes.restartButton} label="REPLAY" onClick={onRestartClick} />
             <ol className={classes.historyList}>
                 {history.map((tombolaNumber) => 
                 <li className={classes.historyNumber} key={tombolaNumber?.number}>
@@ -46,12 +46,15 @@ function CallerView({
                 {history && history[history.length - 1]?.number}
             </header>
             <div className={classes.buttonsContainer}>
-                <Button className={classes.button} label="Call" onClick={onCallClick} />
-                <Button className={classes.button} label="Repeat" onClick={onRepeatClick} />
+                <Button className={classes.button} label="Chiama" onClick={onCallClick} />
+                <Button className={classes.button} label="Ripeti" onClick={onRepeatClick} />
             </div>
             <div className={classes.callerCardsContainer}>
                 {callerCards.map(callerCard => <CallerCard callerCard={callerCard}/>)}
             </div>
+            <Button className={classes.restartButton} label="FINE PARTITA" onClick={onRestartClick} />
+
+            <RestartModal />
         </section>
 }
 
