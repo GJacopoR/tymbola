@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import callerReducer from './slice/caller-slice'
-import cardReducer from './slice/card-slice'
+import playerReducer from './slice/player-slice'
 import modalReducer from './slice/modal-slice'
 
 
 export const store = configureStore({
-  reducer: {caller: callerReducer, card: cardReducer, modal: modalReducer},
+  reducer: {
+    caller: callerReducer,
+    modal: modalReducer,
+    player: playerReducer
+  },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

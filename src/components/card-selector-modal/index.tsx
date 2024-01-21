@@ -1,16 +1,25 @@
-import CardSelectorModalComponent from './card-selector-modal';
-import { useAppSelector } from '../../slice/hooks';
-import * as modal from '../../slice/modal-slice';
-import { useAppDispatch } from '../../slice/hooks';
+import CardSelectorModalComponent from "./card-selector-modal";
+import { useAppSelector } from "../../slice/hooks";
+import * as modal from "../../slice/modal-slice";
+import * as player from "../../slice/player-slice";
+import { useAppDispatch } from "../../slice/hooks";
 
 function CardSelectorModal() {
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-    const isModalOpen = useAppSelector(state => state.modal.isOpen)
+  const isModalOpen = useAppSelector((state) => state.modal.isOpen);
 
-    const handleClose = () => dispatch(modal.toggle())
+  const handleClose = () => dispatch(modal.toggle());
 
-    return <CardSelectorModalComponent isModalOpen={isModalOpen} onClose={handleClose}/>
+  const handleNewCardsClick = () => dispatch(player.getRandomNumbers(6));
+
+  return (
+    <CardSelectorModalComponent
+      isModalOpen={isModalOpen}
+      onClose={handleClose}
+      onNewCardsClick={handleNewCardsClick}
+    />
+  );
 }
 
 export default CardSelectorModal;
