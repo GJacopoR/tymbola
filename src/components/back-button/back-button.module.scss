@@ -14,7 +14,6 @@
     align-self: flex-start;
 
     .backLink{
-
         height: 100%;
 
         .backIcon{
@@ -23,4 +22,9 @@
         }
     }
 
+}
+
+.smallButton{
+    width: 35px;
+    height: 35px;
 }

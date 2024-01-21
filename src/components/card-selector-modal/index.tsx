@@ -7,17 +7,36 @@ import { useAppDispatch } from "../../slice/hooks";
 function CardSelectorModal() {
   const dispatch = useAppDispatch();
 
-  const isModalOpen = useAppSelector((state) => state.modal.isOpen);
+  const bodySelectionContent: "options" | "new" | "load" | "create" =
+    useAppSelector((state) => state.modal.bodySelectionContent);
 
-  const handleClose = () => dispatch(modal.toggle());
+  const isModalOpen: boolean = useAppSelector((state) => state.modal.isOpen);
 
-  const handleNewCardsClick = () => dispatch(player.getRandomNumbers(6));
+  const handleBack = (): void => {
+    dispatch(modal.setBodySelectionContent("options"));
+  };
+
+  const handleClose = (): void => {
+    dispatch(modal.toggle());
+  };
+
+  const handleNewCardsClick = (): void => {
+    // dispatch(player.getRandomNumbers(6));
+    dispatch(modal.setBodySelectionContent("new"));
+  };
+
+  const handleNewCardsNumberClick = (cardsNumber: number): void => {
+    dispatch(player.getRandomNumbers(cardsNumber));
+  };
 
   return (
     <CardSelectorModalComponent
+      bodySelectionContent={bodySelectionContent}
       isModalOpen={isModalOpen}
+      onBack={handleBack}
       onClose={handleClose}
       onNewCardsClick={handleNewCardsClick}
+      onNewCardsNumberClick={handleNewCardsNumberClick}
     />
   );
 }
