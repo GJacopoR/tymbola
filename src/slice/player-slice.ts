@@ -1,17 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { RootState } from '../store'
+import { shuffle } from '../assets/array-helpers'
 
 export interface PlayerNumber {
     checked: boolean,
+    coordinateX: number,
+    coordinateY: number,
     value: number,
 }
 
 export interface PlayerSlice {
-    value: PlayerNumber[][]
+    structure: PlayerNumber[][]
 }
 
 const initialState: PlayerSlice = {
-    value: [[]],
+    structure: [[]],
 }
 
 export const playerSlice = createSlice({
@@ -58,17 +62,25 @@ export const playerSlice = createSlice({
             }
 
             const cards: PlayerNumber[][] = allCards
-                .map((card) => card
-                    .sort((a, b) => a - b)
-                    .map(number => ({
-                        checked: false,
-                        value: number
-                    })
-                    )
+                .map((card) => {
+                    const cardYCoordinates = shuffle(Array.from(
+                        { length: 15 },
+                        (_, i) => Math.floor(i / 5) + 1
+                    ))
+
+                    return card
+                        .sort((a, b) => a - b)
+                        .map((number: number, i: number) => ({
+                            checked: false,
+                            coordinateX: number === 90 ? 9 : Math.ceil(number / 10),
+                            coordinateY: cardYCoordinates[i],
+                            value: number
+                        })
+                        )
+                }
                 );
 
-            console.log(cards)
-            state.value = cards
+            state.structure = cards
         }
         // increment: (state) => {
         //     state.value += 1
@@ -83,5 +95,7 @@ export const playerSlice = createSlice({
 })
 
 export const { getRandomNumbers } = playerSlice.actions
+
+export const selectCardsStructure = (state: RootState) => state.player.structure;
 
 export default playerSlice.reducer

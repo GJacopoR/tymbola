@@ -36,18 +36,6 @@
             top: 10px;
             left: 10px;
             margin: 0;
-            // border: none;
-            // width: 35px;
-            // height: 35px;
-            // border-radius: 50%;
-            // background-color: bisque;
-            // border: solid 3px darkgoldenrod;
-            // padding: 0;
-
-            // & svg {
-            //     width: max-content;
-            //     height: 100%;
-            // }
         }
 
         .closeButton{
@@ -91,6 +79,11 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                & a {
+                    text-decoration: none;
+                    color: red;
+                }
             }
         }
     }

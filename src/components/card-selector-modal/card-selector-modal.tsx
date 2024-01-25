@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BackButton from "../back-button";
 import Button from "../button";
 import classes from "./card-selector-modal.module.scss";
@@ -68,8 +69,11 @@ function getBodyContent(
                 <Button
                   className={classes.cardsNumberButton}
                   key={cardsNumber + "_card_per_player"}
-                  label={String(cardsNumber)}
+                  // label={String(cardsNumber)}
                   onClick={() => onNewCardsNumberClick(cardsNumber)}
+                  children={
+                    <Link to={"/tymbola/player"}>{String(cardsNumber)}</Link>
+                  }
                 />
               )
             )}
