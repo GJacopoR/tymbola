@@ -1,20 +1,43 @@
-.card{
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+// .card{
+//     display: grid;
+//     grid-template-columns: repeat(9, 1fr);
+//     grid-template-rows: repeat(3, 1fr);
+//     grid-column-gap: 0px;
+//     grid-row-gap: 0px;
+//     background-color: burlywood;
+//     border: solid 1px burlywood;
+//     border-radius: 3px;
+
+//     .emptyBox{
+//         background-color: red;
+//             border: solid 2px burlywood;
+//             border-radius: 3px;
+//             color: darkslategray;
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//     }
+// }
+
+.card {
     background-color: burlywood;
     border: solid 1px burlywood;
     border-radius: 3px;
+    margin: 10px 0;
 
-    .emptyBox{
-        background-color: red;
+    .cardRow {
+        display: flex;
+
+        .emptyBox{
+            width: 3rem;
+            height: 2rem;
+            background-color: blanchedalmond;
             border: solid 2px burlywood;
             border-radius: 3px;
             color: darkslategray;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
     }
 }
