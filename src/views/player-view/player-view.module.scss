@@ -1,0 +1,17 @@
+.viewContainer {
+    width: 100%;
+
+    .backButton{
+        position: absolute;
+        left: 10px;
+        top: 0;
+    }
+
+    .cardsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}

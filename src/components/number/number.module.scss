@@ -4,8 +4,41 @@
     background-color: blanchedalmond;
     border: solid 2px burlywood;
     border-radius: 3px;
-    color: darkslategray;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    label {
+        z-index: 1;
+        color: dimgray;
+        font-size: larger;
+        font-weight: bold;
+        font-family: 'Rubik Maps', serif;
+    }
+
+    .fakeLabel {
+        z-index: 0;
+        color: black;
+        font-size: larger;
+        font-weight: bold;
+        font-family: 'Rubik Maps', serif;
+        position: absolute;
+    }
+
+    input {
+        display: none;
+    }
+
+    .checkedLabel {
+        color: red;
+        font-family: 'Rubik Maps', serif;
+    }
+
+    .checkedFakeLabel {
+        color: darkred;
+        width: 28px;
+        height: 27px;
+        border: solid 3px red;
+        border-radius: 50px;
+    }
 }

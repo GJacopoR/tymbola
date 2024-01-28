@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-import { shuffle } from '../assets/array-helpers'
+// import { shuffle } from '../assets/array-helpers'
 
 export interface PlayerNumber {
     checked: boolean,
-    coordinateX: number,
-    coordinateY: number,
+    column: number,
+    // coordinateY: number,
     value: number,
 }
 
@@ -22,7 +22,8 @@ export const playerSlice = createSlice({
     name: 'player',
     initialState,
     reducers: {
-        getRandomNumbers: (state, action: PayloadAction<number>) => {
+        setRandomNumbers: (state, action: PayloadAction<number>) => {
+            // creating the repository from which we'll take numbers in order to have all 90 tombola numbers withour repeating them : an Array containing three arrays each containing the numbers on 10 intervals
             const repository: number[][] = Array.from(
                 { length: 9 },
                 (_, i) => (i + 1) * 10
@@ -36,6 +37,7 @@ export const playerSlice = createSlice({
 
             const allCards: number[][] = [];
 
+            // creating an action.payload number of card and pushing into them a single number for each interval of ten (one for upper sub-arrays), in this way we'll ensure we at least have one number for every ten. Then we'll exclude that number from the repository.
             for (let i = 0; i < action.payload; i++) {
                 const currentCard: number[] = [];
                 repository.forEach((_, j) => {
@@ -46,8 +48,10 @@ export const playerSlice = createSlice({
                 allCards.push(currentCard);
             }
 
+            // with remaining numbers, we create a single array.
             const remainings = repository.flat();
 
+            // then we push a number from remainings array for each card as long as every card arrives at length 15
             for (let i = 0; i < action.payload; i++) {
                 while (allCards[i].length < 15) {
                     const selectedNumberIndex: number = Math.floor(
@@ -61,40 +65,34 @@ export const playerSlice = createSlice({
                 }
             }
 
-            const cards: PlayerNumber[][] = allCards
-                .map((card) => {
-                    const cardYCoordinates = shuffle(Array.from(
-                        { length: 15 },
-                        (_, i) => Math.floor(i / 5) + 1
-                    ))
-
-                    return card
-                        .sort((a, b) => a - b)
-                        .map((number: number, i: number) => ({
-                            checked: false,
-                            coordinateX: number === 90 ? 9 : Math.ceil(number / 10),
-                            coordinateY: cardYCoordinates[i],
-                            value: number
-                        })
-                        )
-                }
+            // finally, we transform those numbers into PlayerNumbers giving them a default false checked value, the value of the number itself, and a column based on their ten
+            const coordinatedAllCards: PlayerNumber[][] = allCards
+                .map((card) => card
+                    .sort((a, b) => a - b)
+                    .map((number: number,) => ({
+                        checked: false,
+                        column: number === 90 ? 9 : Math.ceil(number / 10),
+                        value: number
+                    })
+                    )
                 );
 
-            state.structure = cards
-        }
-        // increment: (state) => {
-        //     state.value += 1
-        // },
-        // decrement: (state) => {
-        //     state.value -= 1
-        // },
-        // incrementByAmount: (state, action: PayloadAction<number>) => {
-        //     state.value += action.payload
-        // },
+            state.structure = coordinatedAllCards
+        },
+
+        switchNumberState: (state, action: PayloadAction<number>) => {
+            for (let i = 0; i < state.structure.length; i++) {
+                for (let j = 0; j < state.structure[i].length; j++) {
+                    if (state.structure[i][j].value === action.payload) {
+                        state.structure[i][j].checked = !state.structure[i][j].checked
+                    }
+                }
+            }
+        },
     },
 })
 
-export const { getRandomNumbers } = playerSlice.actions
+export const { setRandomNumbers, switchNumberState } = playerSlice.actions
 
 export const selectCardsStructure = (state: RootState) => state.player.structure;
 

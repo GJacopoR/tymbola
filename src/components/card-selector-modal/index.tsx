@@ -21,12 +21,12 @@ function CardSelectorModal() {
   };
 
   const handleNewCardsClick = (): void => {
-    // dispatch(player.getRandomNumbers(6));
+    // dispatch(player.setRandomNumbers(6));
     dispatch(modal.setBodySelectionContent("new"));
   };
 
   const handleNewCardsNumberClick = (cardsNumber: number): void => {
-    dispatch(player.getRandomNumbers(cardsNumber));
+    dispatch(player.setRandomNumbers(cardsNumber));
   };
 
   return (
