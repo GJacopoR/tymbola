@@ -27,6 +27,7 @@ function CardSelectorModal() {
 
   const handleNewCardsNumberClick = (cardsNumber: number): void => {
     dispatch(player.setRandomNumbers(cardsNumber));
+    dispatch(modal.toggle());
   };
 
   return (

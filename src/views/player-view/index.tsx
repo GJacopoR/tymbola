@@ -8,9 +8,10 @@ import PlayerViewComponent from "./player-view";
 
 function PlayerView() {
   const cardsNumbers: player.PlayerNumber[][] = useAppSelector(
-    player.selectCardsStructure
+    player.selectCardsNumbers
   );
 
+  // TODO: we should move this logic inside the slice
   const getCardStructure = (
     card: player.PlayerNumber[]
   ): player.PlayerNumber[][] => {

@@ -8,3 +8,22 @@
     height: fit-content;
     padding: 0.5rem;
 }
+
+.ongoingGameSection{
+    margin: 1rem 0;
+    
+    & svg {
+        height: 2rem;
+        width: 2rem;
+        fill: goldenrod;
+    }
+
+    & p {
+        font-family: 'Sansita', sans-serif;
+        letter-spacing: 2px;
+        font-size: larger;
+        font-weight: 800;
+        color: red;
+        margin: 0;
+    }
+}

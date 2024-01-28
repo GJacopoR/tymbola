@@ -11,11 +11,13 @@ export interface PlayerNumber {
 }
 
 export interface PlayerSlice {
-    structure: PlayerNumber[][]
+    isPlayerGameOngoing: boolean,
+    cardsNumbers: PlayerNumber[][]
 }
 
 const initialState: PlayerSlice = {
-    structure: [[]],
+    isPlayerGameOngoing: false,
+    cardsNumbers: [[]],
 }
 
 export const playerSlice = createSlice({
@@ -76,24 +78,31 @@ export const playerSlice = createSlice({
                     })
                     )
                 );
-
-            state.structure = coordinatedAllCards
+            state.isPlayerGameOngoing = true
+            state.cardsNumbers = coordinatedAllCards
         },
 
         switchNumberState: (state, action: PayloadAction<number>) => {
-            for (let i = 0; i < state.structure.length; i++) {
-                for (let j = 0; j < state.structure[i].length; j++) {
-                    if (state.structure[i][j].value === action.payload) {
-                        state.structure[i][j].checked = !state.structure[i][j].checked
+            for (let i = 0; i < state.cardsNumbers.length; i++) {
+                for (let j = 0; j < state.cardsNumbers[i].length; j++) {
+                    if (state.cardsNumbers[i][j].value === action.payload) {
+                        state.cardsNumbers[i][j].checked = !state.cardsNumbers[i][j].checked
                     }
                 }
             }
         },
+
+        setEndGame: (state) => {
+            state.isPlayerGameOngoing = false
+            state.cardsNumbers = [[]]
+        },
     },
 })
 
-export const { setRandomNumbers, switchNumberState } = playerSlice.actions
+export const { setRandomNumbers, switchNumberState, setEndGame } = playerSlice.actions
 
-export const selectCardsStructure = (state: RootState) => state.player.structure;
+export const selectCardsNumbers = (state: RootState) => state.player.cardsNumbers;
+
+export const selectIsPlayerGameOngoing = (state: RootState) => state.player.isPlayerGameOngoing;
 
 export default playerSlice.reducer

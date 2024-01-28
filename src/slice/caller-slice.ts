@@ -5,22 +5,24 @@ import { numbers } from '../assets/smorfia.json'
 
 export interface TombolaNumber {
   number: number,
-  pronunciation:string,
+  pronunciation: string,
   smorfia_meaning: string
 }
 
 export interface CallerSlice {
-    history: TombolaNumber[],
-    isSmorfiaMode: boolean,
-    repository: TombolaNumber[]
-}   
+  history: TombolaNumber[],
+  isCallerGameOngoing: boolean,
+  isSmorfiaMode: boolean,
+  repository: TombolaNumber[]
+}
 
-const repository:TombolaNumber[] = [...Object.values(numbers)]
+const repository: TombolaNumber[] = [...Object.values(numbers)]
 
 const initialState: CallerSlice = {
-    history: [],
-    isSmorfiaMode: true,
-    repository: repository
+  history: [],
+  isCallerGameOngoing: false,
+  isSmorfiaMode: true,
+  repository: repository
 }
 
 export const callerSlice = createSlice({
@@ -28,32 +30,29 @@ export const callerSlice = createSlice({
   initialState,
   reducers: {
     extract: (state) => {
-      const position = Math.floor(Math.random() * (state.repository.length +1))
-      const extracted:TombolaNumber = state.repository.splice(position, 1)[0]
+      const position = Math.floor(Math.random() * (state.repository.length + 1))
+      const extracted: TombolaNumber = state.repository.splice(position, 1)[0]
       extracted && state.history.push(extracted)
+      state.isCallerGameOngoing = true;
     },
 
     restart: (state) => {
       state.repository = repository;
       state.history = [];
+      state.isCallerGameOngoing = false;
     },
 
     switchIsSmorfiaMode: (state) => {
       state.isSmorfiaMode = !state.isSmorfiaMode
     }
-
-    // decrement: (state) => {
-    //   state.value -= 1
-    // },
-    // incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.value += action.payload
-    // },
   },
 })
 
 export const { extract, restart, switchIsSmorfiaMode } = callerSlice.actions;
 
 export const selectHistory = (state: RootState) => state.caller.history;
+
+export const selectIsCallerGameOngoing = (state: RootState) => state.caller.isCallerGameOngoing;
 
 export const selectIsSmorfiaMode = (state: RootState) => state.caller.isSmorfiaMode;
 

@@ -15,6 +15,7 @@ function PlayerView({
   return (
     <section className={classes.viewContainer}>
       <BackButton className={classes.backButton} size="small" />
+
       <main className={classes.cardsContainer}>
         {cardsNumbers.map((cardNumbers, i) => (
           <Card
