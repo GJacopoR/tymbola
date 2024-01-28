@@ -77,17 +77,17 @@
             justify-items: center;
             align-items: center;
 
+            & a {
+                text-decoration: none;
+            }
+
+
             .cardsNumberButton{
                 width: fit-content;
                 padding: 0 0.75rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
-                & a {
-                    text-decoration: none;
-                    color: red;
-                }
             }
         }
     }

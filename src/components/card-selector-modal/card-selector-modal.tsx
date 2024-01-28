@@ -66,15 +66,16 @@ function getBodyContent(
           <main className={classes.cardsNumberSelectorContainer}>
             {Array.from({ length: MAX_CARDS_PER_PLAYER }, (_, i) => i + 1).map(
               (cardsNumber) => (
-                <Button
-                  className={classes.cardsNumberButton}
+                <Link
                   key={cardsNumber + "_card_per_player"}
-                  // label={String(cardsNumber)}
-                  onClick={() => onNewCardsNumberClick(cardsNumber)}
-                  children={
-                    <Link to={"/tymbola/player"}>{String(cardsNumber)}</Link>
-                  }
-                />
+                  to={"/tymbola/player"}
+                >
+                  <Button
+                    className={classes.cardsNumberButton}
+                    label={String(cardsNumber)}
+                    onClick={() => onNewCardsNumberClick(cardsNumber)}
+                  />
+                </Link>
               )
             )}
           </main>
