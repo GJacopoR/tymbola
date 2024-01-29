@@ -41,7 +41,7 @@
   color: #888;
 }
 
-.slide-in{
+/* .slide-in{
   position: fixed;
   top: 0;
   left: 0;
@@ -61,4 +61,4 @@
   background-image: url("../public/assets/tablecloth-texture-psd.gif");
   transform-origin: top;
   z-index: 10;
-}
+} */

@@ -4,7 +4,6 @@ import * as caller from "../../slice/caller-slice";
 import * as modal from "../../slice/modal-slice";
 import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import { useEffect } from "react";
-import transition from "../../transitions";
 
 function CallerView() {
   const utterance: SpeechSynthesisUtterance = new SpeechSynthesisUtterance();
@@ -111,4 +110,4 @@ function CallerView() {
   );
 }
 
-export default transition(CallerView);
+export default CallerView;

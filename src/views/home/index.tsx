@@ -4,7 +4,6 @@ import * as modal from "../../slice/modal-slice";
 import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import * as player from "../../slice/player-slice";
 import * as caller from "../../slice/caller-slice";
-import transition from "../../transitions";
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -40,4 +39,4 @@ function Home() {
   );
 }
 
-export default transition(Home);
+export default Home;

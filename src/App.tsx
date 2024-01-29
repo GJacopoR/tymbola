@@ -11,7 +11,7 @@ function App() {
 
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+      <Routes key={location.pathname} location={location}>
         <Route index path="/tymbola/" element={<Home />} />
         <Route path="/tymbola/caller" element={<CallerView />} />
         <Route path="/tymbola/constructor" element={<CardConstructor />} />
