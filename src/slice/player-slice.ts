@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-// import { shuffle } from '../assets/array-helpers'
+import { shuffle } from '../assets/array-helpers'
 
 export interface PlayerNumber {
     checked: boolean,
@@ -12,12 +12,12 @@ export interface PlayerNumber {
 
 export interface PlayerSlice {
     isPlayerGameOngoing: boolean,
-    cardsNumbers: PlayerNumber[][]
+    cardsStructure: PlayerNumber[][][]
 }
 
 const initialState: PlayerSlice = {
     isPlayerGameOngoing: false,
-    cardsNumbers: [[]],
+    cardsStructure: [[[]]],
 }
 
 export const playerSlice = createSlice({
@@ -78,15 +78,19 @@ export const playerSlice = createSlice({
                     })
                     )
                 );
+
             state.isPlayerGameOngoing = true
-            state.cardsNumbers = coordinatedAllCards
+            // to even better randomize cards, we're shuffling their rows right after creating them
+            state.cardsStructure = coordinatedAllCards.map(card => shuffle(getCardStructure(card)))
         },
 
         switchNumberState: (state, action: PayloadAction<number>) => {
-            for (let i = 0; i < state.cardsNumbers.length; i++) {
-                for (let j = 0; j < state.cardsNumbers[i].length; j++) {
-                    if (state.cardsNumbers[i][j].value === action.payload) {
-                        state.cardsNumbers[i][j].checked = !state.cardsNumbers[i][j].checked
+            for (let i = 0; i < state.cardsStructure.length; i++) {
+                for (let j = 0; j < state.cardsStructure[i].length; j++) {
+                    for (let k = 0; k < state.cardsStructure[i][j].length; k++) {
+                        if (state.cardsStructure[i][j][k].value === action.payload) {
+                            state.cardsStructure[i][j][k].checked = !state.cardsStructure[i][j][k].checked
+                        }
                     }
                 }
             }
@@ -94,15 +98,60 @@ export const playerSlice = createSlice({
 
         setEndGame: (state) => {
             state.isPlayerGameOngoing = false
-            state.cardsNumbers = [[]]
+            state.cardsStructure = [[]]
         },
     },
 })
 
 export const { setRandomNumbers, switchNumberState, setEndGame } = playerSlice.actions
 
-export const selectCardsNumbers = (state: RootState) => state.player.cardsNumbers;
+export const selectCardsStructure = (state: RootState) => state.player.cardsStructure;
 
 export const selectIsPlayerGameOngoing = (state: RootState) => state.player.isPlayerGameOngoing;
 
 export default playerSlice.reducer
+
+const getCardStructure = (
+    card: PlayerNumber[]
+): PlayerNumber[][] => {
+    const upperRow: PlayerNumber[] = Array.from(
+        { length: 9 },
+        (_, i) => ({
+            column: i + 1,
+            checked: false,
+            value: 0,
+        })
+    );
+    const middleRow: PlayerNumber[] = Array.from(
+        { length: 9 },
+        (_, i) => ({
+            column: i + 1,
+            checked: false,
+            value: 0,
+        })
+    );
+    const lowerRow: PlayerNumber[] = Array.from(
+        { length: 9 },
+        (_, i) => ({
+            column: i + 1,
+            checked: false,
+            value: 0,
+        })
+    );
+
+    for (let i = 0; i < card.length; i++) {
+        if (i % 3 === 0) {
+            upperRow[
+                upperRow.findIndex((number) => number.column === card[i].column)
+            ] = card[i];
+            middleRow[
+                middleRow.findIndex((number) => number.column === card[i + 1].column)
+            ] = card[i + 1];
+            lowerRow[
+                lowerRow.findIndex((number) => number.column === card[i + 2].column)
+            ] = card[i + 2];
+        }
+    }
+
+    return [upperRow, middleRow, lowerRow];
+};

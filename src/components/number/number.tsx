@@ -4,15 +4,10 @@ import classes from "./number.module.scss";
 
 interface NumberProps extends PlayerNumber {
   onClick: (e: ChangeEvent<HTMLInputElement>) => void;
+  // onDoubleClick: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Number({
-  checked,
-  //   column,
-  //   coordinateY,
-  onClick,
-  value,
-}: NumberProps) {
+function Number({ checked, onClick, value }: NumberProps) {
   return (
     <div className={classes.boxContainer}>
       <label
