@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import BackButton from "../back-button";
 import Button from "../button";
 import classes from "./card-selector-modal.module.scss";
+import { AnimatePresence, motion } from "framer-motion";
 
 const MAX_CARDS_PER_PLAYER: number = 6;
 
@@ -22,31 +23,44 @@ function CardSelectorModal({
   onNewCardsClick,
   onNewCardsNumberClick,
 }: CardSelectorModalProps): JSX.Element {
-  return isModalOpen ? (
-    <aside className={classes.modalContainer}>
-      <div className={classes.overlay}></div>
-      <main className={`${classes.modal} ${isModalOpen && classes.openModal}`}>
-        {bodySelectionContent !== "options" && (
-          <BackButton
-            className={classes.backButton}
-            onClick={onBack}
-            size="small"
-          />
-        )}
+  return (
+    <AnimatePresence>
+      {isModalOpen && (
+        <aside className={classes.modalContainer}>
+          <motion.div
+            className={classes.overlay}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+          ></motion.div>
 
-        <button className={classes.closeButton} onClick={onClose}>
-          X
-        </button>
+          <motion.main
+            className={classes.modal}
+            initial={{ translateY: 300, opacity: 0 }}
+            animate={{ translateY: 0, opacity: 1 }}
+            exit={{ translateY: 200, opacity: 0 }}
+            transition={{ duration: 0.4, type: "spring" }}
+          >
+            {bodySelectionContent !== "options" && (
+              <BackButton
+                className={classes.backButton}
+                onClick={onBack}
+                size="small"
+              />
+            )}
 
-        {getBodyContent(
-          bodySelectionContent,
-          onNewCardsClick,
-          onNewCardsNumberClick
-        )}
-      </main>
-    </aside>
-  ) : (
-    <></>
+            <button className={classes.closeButton} onClick={onClose}>
+              X
+            </button>
+
+            {getBodyContent(
+              bodySelectionContent,
+              onNewCardsClick,
+              onNewCardsNumberClick
+            )}
+          </motion.main>
+        </aside>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -61,7 +75,9 @@ function getBodyContent(
     case "new":
       return (
         <section className={classes.modalBody}>
-          <header className={classes.header}>{`Quante cartelle vuoi?`}</header>
+          <header className={classes.header}>
+            {`Quante cartelle creare?`}
+          </header>
 
           <main className={classes.cardsNumberSelectorContainer}>
             {Array.from({ length: MAX_CARDS_PER_PLAYER }, (_, i) => i + 1).map(
@@ -91,9 +107,9 @@ function getBodyContent(
     default:
       return (
         <section className={classes.modalBody}>
-          <header
-            className={classes.header}
-          >{`Come selezionare le cartelle?`}</header>
+          <header className={classes.header}>
+            {`Come selezionare le cartelle?`}
+          </header>
 
           <main>
             <Button label="Nuove cartelle" onClick={onNewCardsClick} />

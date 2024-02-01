@@ -42,7 +42,10 @@ const PageTransition = ({ children, isDirectionBack }: TransitionProps) => {
         initial="initial"
         animate="animate"
         exit="exit"
-        transition={{ duration: 0.2 }}
+        transition={{
+          duration: 0.2,
+          delay: window.location.pathname.includes("player") ? 0.3 : 0,
+        }}
       >
         {children}
       </motion.div>
