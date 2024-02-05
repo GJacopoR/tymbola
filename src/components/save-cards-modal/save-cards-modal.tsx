@@ -1,18 +1,14 @@
 import Button from "../button";
+import classes from "./save-cards-modal.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
-import classes from "./restart-modal.module.scss";
 
-interface CardSelectorModalProps {
+interface SaveCardsModalProps {
   isModalOpen: boolean;
   onClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onRestart: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onSave: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-function CardSelectorModal({
-  isModalOpen,
-  onClose,
-  onRestart,
-}: CardSelectorModalProps) {
+function SaveCardsModal({ isModalOpen, onClose, onSave }: SaveCardsModalProps) {
   return (
     <AnimatePresence>
       {isModalOpen && (
@@ -34,12 +30,16 @@ function CardSelectorModal({
               X
             </button>
 
-            <header
-              className={classes.header}
-            >{`Sei sicuro di voler concludere la partita corrente?`}</header>
+            <header className={classes.header}>
+              Sei sicuro di voler salvare le cartelle attuali?
+            </header>
+
+            <p className={classes.subTitle}>
+              Eventuali cartelle già salvate verranno sovrascritte`
+            </p>
 
             <main>
-              <Button label="Sì, concludi" onClick={onRestart} />
+              <Button label="Sì, salva" onClick={onSave} />
               <Button label="No, indietro" onClick={onClose} />
             </main>
           </motion.main>
@@ -49,4 +49,4 @@ function CardSelectorModal({
   );
 }
 
-export default CardSelectorModal;
+export default SaveCardsModal;

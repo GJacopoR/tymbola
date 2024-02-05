@@ -6,7 +6,6 @@ import { shuffle } from '../assets/array-helpers'
 export interface PlayerNumber {
     checked: boolean,
     column: number,
-    // coordinateY: number,
     value: number,
 }
 
@@ -79,9 +78,14 @@ export const playerSlice = createSlice({
                     )
                 );
 
-            state.isPlayerGameOngoing = true
             // to even better randomize cards, we're shuffling their rows right after creating them
             state.cardsStructure = coordinatedAllCards.map(card => shuffle(getCardStructure(card)))
+            state.isPlayerGameOngoing = true
+        },
+
+        setSavedNumbers: (state, action: PayloadAction<PlayerNumber[][][]>) => {
+            state.cardsStructure = action.payload
+            state.isPlayerGameOngoing = true
         },
 
         switchNumberState: (state, action: PayloadAction<number>) => {
@@ -97,13 +101,13 @@ export const playerSlice = createSlice({
         },
 
         setEndGame: (state) => {
+            state.cardsStructure = [[[]]]
             state.isPlayerGameOngoing = false
-            state.cardsStructure = [[]]
         },
     },
 })
 
-export const { setRandomNumbers, switchNumberState, setEndGame } = playerSlice.actions
+export const { setRandomNumbers, setSavedNumbers, switchNumberState, setEndGame } = playerSlice.actions
 
 export const selectCardsStructure = (state: RootState) => state.player.cardsStructure;
 

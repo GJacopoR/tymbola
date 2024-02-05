@@ -3,11 +3,12 @@ import classes from "./home.module.scss";
 import CardSelectorModal from "../../components/card-selector-modal";
 import Button from "../../components/button";
 import Header from "../../components/header";
-import PageTransition from "../../page-transition";
+import PageTransition from "../../assets/page-transition";
 
 interface HomeComponentProps {
   isCallerGameOngoing: boolean;
   isPlayerGameOngoing: boolean;
+  isModalOpen: boolean;
   onEndCallerGame: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onEndPlayerGame: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onModalOpen: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -16,6 +17,7 @@ interface HomeComponentProps {
 function Home({
   isCallerGameOngoing,
   isPlayerGameOngoing,
+  isModalOpen,
   onEndCallerGame,
   onEndPlayerGame,
   onModalOpen,
@@ -85,9 +87,7 @@ function Home({
             </section>
           )}
 
-        <aside>
-          <CardSelectorModal />
-        </aside>
+        <aside>{isModalOpen && <CardSelectorModal />}</aside>
       </>
     </PageTransition>
   );

@@ -6,7 +6,7 @@ import { InputHTMLAttributes } from "react";
 import SliderButton from "../../components/slider-button";
 import CallerCard from "../../components/caller-card";
 import RestartModal from "../../components/restart-modal";
-import PageTransition from "../../page-transition";
+import PageTransition from "../../assets/page-transition";
 
 interface CallerViewProps {
   callerCards: number[][];

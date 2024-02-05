@@ -7,19 +7,23 @@ import { AnimatePresence, motion } from "framer-motion";
 const MAX_CARDS_PER_PLAYER: number = 6;
 
 interface CardSelectorModalProps {
+  areCardsSaved: boolean;
   bodySelectionContent: "options" | "new" | "load" | "create";
   isModalOpen: boolean;
   onBack: (e: React.MouseEvent<HTMLDivElement>) => void;
   onClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onLoad: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onNewCardsClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onNewCardsNumberClick: (cardsNumber: number) => void;
 }
 
 function CardSelectorModal({
+  areCardsSaved,
   bodySelectionContent,
   isModalOpen,
   onBack,
   onClose,
+  onLoad,
   onNewCardsClick,
   onNewCardsNumberClick,
 }: CardSelectorModalProps): JSX.Element {
@@ -38,7 +42,7 @@ function CardSelectorModal({
             initial={{ translateY: 300, opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
             exit={{ translateY: 200, opacity: 0 }}
-            transition={{ duration: 0.4, type: "spring" }}
+            transition={{ duration: 0.5, type: "spring" }}
           >
             {bodySelectionContent !== "options" && (
               <BackButton
@@ -53,7 +57,9 @@ function CardSelectorModal({
             </button>
 
             {getBodyContent(
+              areCardsSaved,
               bodySelectionContent,
+              onLoad,
               onNewCardsClick,
               onNewCardsNumberClick
             )}
@@ -67,7 +73,9 @@ function CardSelectorModal({
 export default CardSelectorModal;
 
 function getBodyContent(
+  areCardsSaved: boolean,
   bodySelectionContent: "options" | "new" | "load" | "create",
+  onLoad: (e: React.MouseEvent<HTMLButtonElement>) => void,
   onNewCardsClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
   onNewCardsNumberClick: (cardsNumber: number) => void
 ): JSX.Element {
@@ -98,8 +106,8 @@ function getBodyContent(
         </section>
       );
 
-    case "load":
-      return <section className={classes.modalBody}></section>;
+    // case "load":
+    //   return <section className={classes.modalBody}></section>;
 
     case "create":
       return <section className={classes.modalBody}></section>;
@@ -111,9 +119,15 @@ function getBodyContent(
             {`Come selezionare le cartelle?`}
           </header>
 
-          <main>
+          <main className={classes.defaultContent}>
             <Button label="Nuove cartelle" onClick={onNewCardsClick} />
-            <Button label="Carica salvate" disabled />
+            <Link to={"/tymbola/player"}>
+              <Button
+                label="Carica salvate"
+                disabled={!areCardsSaved}
+                onClick={onLoad}
+              />
+            </Link>
             <Button label="Scegli numeri" disabled />
           </main>
         </section>

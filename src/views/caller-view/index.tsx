@@ -38,14 +38,6 @@ function CallerView() {
 
   const lastTombolaNumber: caller.TombolaNumber = history[history.length - 1];
 
-  // const callerCards = [Array.from({length: 15}, (_, i) => i + 1),
-  //     Array.from({length: 15}, (_, i) => i + 16),
-  //     Array.from({length: 15}, (_, i) => i + 31),
-  //     Array.from({length: 15}, (_, i) => i + 46),
-  //     Array.from({length: 15}, (_, i) => i + 61),
-  //     Array.from({length: 15}, (_, i) => i + 76),
-  // ]
-
   const callerCards = [
     [1, 2, 3, 4, 5, 11, 12, 13, 14, 15, 21, 22, 23, 24, 25],
     [6, 7, 8, 9, 10, 16, 17, 18, 19, 20, 26, 27, 28, 29, 30],
