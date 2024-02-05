@@ -1,0 +1,27 @@
+{
+    "name": "Taglialatombola",
+    "short_name": "TTmbl",
+
+    "dir": "ltr",
+
+    "lang": "it-IT",
+
+    "orientation": "portrait",
+    "start_url": "/tymbola/",
+    "background_color": "#242424",
+    "theme_color": "#242424",
+    "display": "standalone",
+    "description": "Clear, fast and easy-to-use Progressive Web Application to play Tombola.",
+    "icons": [
+      {
+        "src": "./Taglialatombola_logo_piccolo.png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "./Taglialatombola_logo_grande.png",
+        "sizes": "512x512"
+      }
+    ]
+  }
+
+  
