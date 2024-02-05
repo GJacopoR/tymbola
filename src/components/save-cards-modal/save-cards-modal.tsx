@@ -31,12 +31,13 @@ function SaveCardsModal({ isModalOpen, onClose, onSave }: SaveCardsModalProps) {
             </button>
 
             <header className={classes.header}>
-              Sei sicuro di voler salvare le cartelle attuali?
+              <h4 className={classes.title}>
+                Sei sicuro di voler salvare le cartelle attuali?
+              </h4>
+              <p className={classes.subTitle}>
+                Eventuali cartelle già salvate verranno sovrascritte
+              </p>
             </header>
-
-            <p className={classes.subTitle}>
-              Eventuali cartelle già salvate verranno sovrascritte`
-            </p>
 
             <main>
               <Button label="Sì, salva" onClick={onSave} />

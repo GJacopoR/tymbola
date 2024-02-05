@@ -27,6 +27,7 @@
 
         & svg {
             width: 21px;
+            margin-left: 1px;
         }
     }
 
@@ -37,5 +38,11 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+
+        .restartButton{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
     }
 }

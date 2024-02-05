@@ -48,16 +48,34 @@
         }
 
         .header{
-            margin: 15% 0 5% 0;
-            color: bisque;
-            font-size: larger;
-            font-weight: 800;
-            font-family: 'Sansita', sans-serif;
-            letter-spacing: 2px;
-            // text-shadow: -2px -2px 0 #654321, 2px -2px 0 #654321, -2px 2px 0 #654321, 2px 2px 0 #654321;
-            text-shadow: 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321;
-            // stroke: solid 1px black;
-            // -webkit-text-stroke: 1px brown;
+            
+            .title{
+                margin: 15% 0 5% 0;
+                color: bisque;
+                font-size: larger;
+                font-weight: 800;
+                font-family: 'Sansita', sans-serif;
+                letter-spacing: 2px;
+                white-space: pre-wrap;
+                // text-shadow: -2px -2px 0 #654321, 2px -2px 0 #654321, -2px 2px 0 #654321, 2px 2px 0 #654321;
+                text-shadow: 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321;
+                // stroke: solid 1px black;
+                // -webkit-text-stroke: 1px brown;
+            }
+    
+            .subTitle {
+                margin: 5% 0 10% 0;
+                color: bisque;
+                font-size: medium;
+                font-weight: 600;
+                font-family: 'Sansita', sans-serif;
+                letter-spacing: 1px;
+                white-space: pre-wrap;
+                // text-shadow: -2px -2px 0 #654321, 2px -2px 0 #654321, -2px 2px 0 #654321, 2px 2px 0 #654321;
+                text-shadow: 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321, 0 0 4px #654321;
+                // stroke: solid 1px black;
+                // -webkit-text-stroke: 1px brown;
+            }
         }
     }
 

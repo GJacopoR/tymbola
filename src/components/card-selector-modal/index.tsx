@@ -3,12 +3,11 @@ import { useAppSelector } from "../../slice/hooks";
 import * as modal from "../../slice/modal-slice";
 import * as player from "../../slice/player-slice";
 import { useAppDispatch } from "../../slice/hooks";
-import { getCookie } from "../../assets/cookie-helpers";
 
 function CardSelectorModal() {
   const dispatch = useAppDispatch();
 
-  const loadedCards: string = getCookie("player-cards");
+  const savedCards = localStorage.getItem("player-cards");
 
   const bodySelectionContent: "options" | "new" | "load" | "create" =
     useAppSelector((state) => state.modal.bodySelectionContent);
@@ -24,7 +23,7 @@ function CardSelectorModal() {
   };
 
   const handleLoad = (): void => {
-    dispatch(player.setSavedNumbers(JSON.parse(loadedCards)));
+    savedCards && dispatch(player.setSavedNumbers(JSON.parse(savedCards)));
     dispatch(modal.toggle());
   };
 
@@ -39,7 +38,7 @@ function CardSelectorModal() {
 
   return (
     <CardSelectorModalComponent
-      areCardsSaved={!!loadedCards}
+      areCardsSaved={!!savedCards}
       bodySelectionContent={bodySelectionContent}
       isModalOpen={isModalOpen}
       onBack={handleBack}

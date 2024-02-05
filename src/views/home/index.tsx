@@ -4,19 +4,9 @@ import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import * as caller from "../../slice/caller-slice";
 import * as player from "../../slice/player-slice";
 import * as modal from "../../slice/modal-slice";
-// import { useEffect, useState } from "react";
 
 function Home() {
   const dispatch = useAppDispatch();
-
-  // const [cardsInCookies, setCardsInCookies] = useState<string>("");
-
-  // useEffect(() => {
-  //   const cookies = document.cookie;
-  //   cookies && setCardsInCookies(cookies);
-  //   console.log("home", cookies, cardsInCookies ? cardsInCookies : "NADA");
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   const isCallerGameOngoing: boolean = useAppSelector(
     caller.selectIsCallerGameOngoing

@@ -100,6 +100,16 @@ export const playerSlice = createSlice({
             }
         },
 
+        resetCardsStates: (state) => {
+            for (let i = 0; i < state.cardsStructure.length; i++) {
+                for (let j = 0; j < state.cardsStructure[i].length; j++) {
+                    for (let k = 0; k < state.cardsStructure[i][j].length; k++) {
+                        state.cardsStructure[i][j][k].checked = false
+                    }
+                }
+            }
+        },
+
         setEndGame: (state) => {
             state.cardsStructure = [[[]]]
             state.isPlayerGameOngoing = false
@@ -107,7 +117,7 @@ export const playerSlice = createSlice({
     },
 })
 
-export const { setRandomNumbers, setSavedNumbers, switchNumberState, setEndGame } = playerSlice.actions
+export const { setRandomNumbers, setSavedNumbers, switchNumberState, resetCardsStates, setEndGame } = playerSlice.actions
 
 export const selectCardsStructure = (state: RootState) => state.player.cardsStructure;
 

@@ -11,19 +11,29 @@
 
 .ongoingGameSection{
     margin: 1rem 0;
-    
-    & svg {
-        height: 2rem;
-        width: 2rem;
-        fill: goldenrod;
-    }
 
-    & p {
-        font-family: 'Sansita', sans-serif;
-        letter-spacing: 2px;
-        font-size: larger;
-        font-weight: 800;
-        color: red;
-        margin: 0;
+    header {
+        margin-bottom: 5%;
+
+        & svg {
+            height: 2rem;
+            width: 2rem;
+            fill: goldenrod;
+        }
+
+        & h4, p {
+            font-family: 'Sansita', sans-serif;
+            letter-spacing: 2px;
+            font-size: larger;
+            font-weight: 800;
+            color: red;
+            margin: 0;
+        }
+
+        & p {
+            font-size: small;
+            letter-spacing: 1px;
+        }
     }
+    
 }

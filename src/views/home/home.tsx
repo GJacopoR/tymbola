@@ -49,28 +49,36 @@ function Home({
         {(isCallerGameOngoing || isPlayerGameOngoing) &&
           !window.location.pathname.includes("player") && (
             <section className={classes.ongoingGameSection}>
-              <svg
-                fill="#ff0000"
-                viewBox="0 0 16 16"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <path
-                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-2A6 6 0 1 1 8 2a6 6 0 0 1 0 12zM7 9h2V4H7v5zm0 3h2v-2H7v2z"
-                    fillRule="evenodd"
-                  ></path>{" "}
-                </g>
-              </svg>
-              <p>{`C'è una partita ${
-                isCallerGameOngoing ? "tenitore" : "giocatore"
-              } attualmente in corso.`}</p>
+              <header>
+                <svg
+                  fill="#ff0000"
+                  viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-2A6 6 0 1 1 8 2a6 6 0 0 1 0 12zM7 9h2V4H7v5zm0 3h2v-2H7v2z"
+                      fillRule="evenodd"
+                    ></path>
+                  </g>
+                </svg>
+                <h4 className={classes.alertTitle}>
+                  {`C'è una partita ${
+                    isCallerGameOngoing ? "tenitore" : "giocatore"
+                  } attualmente in corso.`}
+                </h4>
+                {!isCallerGameOngoing && (
+                  <p className={classes.alertSubTitle}>
+                    Terminandola, eventuali cartelle non salvate andranno perse.
+                  </p>
+                )}
+              </header>
               <Button
                 className={classes.button}
                 label={"Termina partita"}

@@ -34,9 +34,14 @@ function CardSelectorModal({
               X
             </button>
 
-            <header
-              className={classes.header}
-            >{`Sei sicuro di voler concludere la partita corrente?`}</header>
+            <header className={classes.header}>
+              <h4 className={classes.title}>
+                {`Sei sicuro di voler concludere la partita corrente?`}
+              </h4>
+              <p className={classes.subTitle}>
+                {`Le cartelle verranno resettate`}
+              </p>
+            </header>
 
             <main>
               <Button label="Sì, concludi" onClick={onRestart} />

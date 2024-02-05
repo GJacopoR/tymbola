@@ -2,23 +2,35 @@ import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import * as player from "../../slice/player-slice";
 import PlayerViewComponent from "./player-view";
 import * as modal from "../../slice/modal-slice";
+import { useState } from "react";
 
 function PlayerView() {
   const dispatch = useAppDispatch();
+
+  const [isRestartModalOpen, setIsRestartModalOpen] = useState<boolean>(false);
 
   const cardsStructure: player.PlayerNumber[][][] = useAppSelector(
     player.selectCardsStructure
   );
 
-  const handleModalOpen = (): void => {
+  const handleRestartModalOpen = (): void => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    setIsRestartModalOpen(true);
+    dispatch(modal.toggle());
+  };
+
+  const handleSaveModalOpen = (): void => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    setIsRestartModalOpen(false);
     dispatch(modal.toggle());
   };
 
   return (
     <PlayerViewComponent
       cardsStructure={cardsStructure}
-      onSaveClick={handleModalOpen}
+      isRestartModalOpen={isRestartModalOpen}
+      onRestartClick={handleRestartModalOpen}
+      onSaveClick={handleSaveModalOpen}
     />
   );
 }

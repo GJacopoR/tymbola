@@ -3,7 +3,7 @@ import { useAppSelector } from "../../slice/hooks";
 // import * as player from "../../slice/player-slice";
 import * as modal from "../../slice/modal-slice";
 import { useAppDispatch } from "../../slice/hooks";
-import { setCookie } from "../../assets/cookie-helpers";
+// import { setCookie } from "../../assets/cookie-helpers";
 
 function SaveCardsModal() {
   const dispatch = useAppDispatch();
@@ -17,8 +17,9 @@ function SaveCardsModal() {
   };
 
   const handleSave = (): void => {
-    const jsonStructure = JSON.stringify(structure);
-    setCookie("player-cards", jsonStructure, 390);
+    localStorage.setItem("player-cards", JSON.stringify(structure));
+    // const jsonStructure = JSON.stringify(structure);
+    // setCookie("player-cards", jsonStructure, 390);
     dispatch(modal.toggle());
   };
 
