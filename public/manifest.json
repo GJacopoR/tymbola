@@ -7,19 +7,56 @@
     "lang": "it-IT",
 
     "orientation": "portrait",
+    "id": "/tymbola/",
     "start_url": "/tymbola/",
     "background_color": "#242424",
     "theme_color": "#242424",
+    "display_override": ["window-control-overlay", "minimal-ui"],
     "display": "standalone",
     "description": "Clear, fast and easy-to-use Progressive Web Application to play Tombola.",
     "icons": [
       {
-        "src": "./Taglialatombola_logo_piccolo.png",
+        "src": "assets/Taglialatombola_logo_piccolo.png",
+        "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "./Taglialatombola_logo_grande.png",
-        "sizes": "512x512"
+        "src": "assets/Taglialatombola_logo_grande.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose": "maskable"
+      }
+    ],
+    "screenshots": [
+      {
+        "src": "screenshots/home_screenshot_pc.png",
+        "type": "image/png",
+        "sizes": "2560x1426",
+        "form_factor": "wide"
+      },
+      {
+        "src": "screenshots/home_screenshot.jpg",
+        "type": "image/jpg",
+        "sizes": "651x1280",
+        "form_factor": "narrow"
+      },
+      {
+        "src": "screenshots/caller_view_screenshot.jpg",
+        "type": "image/jpg",
+        "sizes": "651x1280",
+        "form_factor": "narrow"
+      },
+      {
+        "src": "screenshots/player_view_screenshot.jpg",
+        "type": "image/jpg",
+        "sizes": "651x1280",
+        "form_factor": "narrow"
+      },
+      {
+        "src": "screenshots/playing_view_screenshot.jpg",
+        "type": "image/jpg",
+        "sizes": "651x1280",
+        "form_factor": "narrow"
       }
     ]
   }

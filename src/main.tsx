@@ -22,10 +22,10 @@ root.render(
   </Provider>
 );
 
-{
-  /* <Router>
+// {
+/* <Router>
         <Routes>
           <Route path="/*" element={<App />} />
         </Routes>
       </Router> */
-}
+// } ×
