@@ -4,9 +4,12 @@ import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import * as caller from "../../slice/caller-slice";
 import * as player from "../../slice/player-slice";
 import * as modal from "../../slice/modal-slice";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 function Home() {
   const dispatch = useAppDispatch();
+
+  const navigate: NavigateFunction = useNavigate();
 
   const isCallerGameOngoing: boolean = useAppSelector(
     caller.selectIsCallerGameOngoing
@@ -16,14 +19,16 @@ function Home() {
     player.selectIsPlayerGameOngoing
   );
 
-  const isModalOpen: boolean = useAppSelector(modal.selectIsOpen);
-
   const handleEndCallerGame = (): void => {
     dispatch(caller.restart());
   };
 
   const handleEndPlayerGame = (): void => {
     dispatch(player.setEndGame());
+  };
+
+  const handleGameReturn = (): void => {
+    navigate(1);
   };
 
   const handleModalOpen = (): void => {
@@ -34,9 +39,9 @@ function Home() {
     <HomeComponent
       isCallerGameOngoing={isCallerGameOngoing}
       isPlayerGameOngoing={isPlayerGameOngoing}
-      isModalOpen={isModalOpen}
       onEndCallerGame={handleEndCallerGame}
       onEndPlayerGame={handleEndPlayerGame}
+      onGameReturn={handleGameReturn}
       onModalOpen={handleModalOpen}
     />
   );

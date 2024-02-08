@@ -3,6 +3,7 @@ import BackButton from "../back-button";
 import Button from "../button";
 import classes from "./card-selector-modal.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
+import CloseButton from "../close-button";
 
 const MAX_CARDS_PER_PLAYER: number = 6;
 
@@ -10,7 +11,7 @@ interface CardSelectorModalProps {
   areCardsSaved: boolean;
   bodySelectionContent: "options" | "new" | "load" | "create";
   isModalOpen: boolean;
-  onBack: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onBack: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onLoad: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onNewCardsClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -41,7 +42,7 @@ function CardSelectorModal({
             className={classes.modal}
             initial={{ translateY: 300, opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
-            exit={{ translateY: 200, opacity: 0 }}
+            exit={{ translateY: 100, opacity: 0 }}
             transition={{ duration: 0.5, type: "spring" }}
           >
             {bodySelectionContent !== "options" && (
@@ -52,9 +53,11 @@ function CardSelectorModal({
               />
             )}
 
-            <button className={classes.closeButton} onClick={onClose}>
-              X
-            </button>
+            <CloseButton
+              className={classes.closeButton}
+              size="small"
+              onClick={onClose}
+            />
 
             {getBodyContent(
               areCardsSaved,

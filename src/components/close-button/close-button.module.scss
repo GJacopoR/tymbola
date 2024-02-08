@@ -1,27 +1,23 @@
-.backButton {
+.closeButton {
     background-color: bisque; // burlywood;
     border: solid 3px darkgoldenrod;
     border-radius: 50%;
     color: red;
-    font-size: large;
+    font-size: 3rem;
     font-weight: 900;
-    // margin: 0.5rem 0;
     height: 3.5rem;
     width: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    align-self: flex-start;
-    padding: 0;
-
-    .backIcon{
-        width: max-content;
-        height: 100%;
-    }
-
+    padding: 0 0 4px 0;
+    transform: rotate(90deg);
+    margin: 0;
 }
 
 .smallButton{
     width: 35px;
     height: 35px;
+    font-size: 1.75rem;
+    padding: 0 0 2px 0;
 }

@@ -1,4 +1,5 @@
 import Button from "../button";
+import CloseButton from "../close-button";
 import classes from "./save-cards-modal.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -26,9 +27,11 @@ function SaveCardsModal({ isModalOpen, onClose, onSave }: SaveCardsModalProps) {
             exit={{ translateY: 200, opacity: 0 }}
             transition={{ duration: 0.5, type: "spring" }}
           >
-            <button className={classes.closeButton} onClick={onClose}>
-              X
-            </button>
+            <CloseButton
+              className={classes.closeButton}
+              size="small"
+              onClick={onClose}
+            />
 
             <header className={classes.header}>
               <h4 className={classes.title}>
