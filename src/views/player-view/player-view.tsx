@@ -60,10 +60,12 @@ function PlayerView({
           }
         />
 
-        <main className={classes.cardsContainer}>
-          {cardsStructure.map((cardStructure, i) => (
-            <Card key={i + "_player_card"} cardStructure={cardStructure} />
-          ))}
+        <main className={classes.bodyContainer}>
+          <section className={classes.cardsContainer}>
+            {cardsStructure.map((cardStructure, i) => (
+              <Card key={i + "_player_card"} cardStructure={cardStructure} />
+            ))}
+          </section>
 
           <Button
             className={classes.restartButton}

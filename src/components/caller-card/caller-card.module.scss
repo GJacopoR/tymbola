@@ -12,7 +12,7 @@
         display: flex;
 
         .boxLabel{
-            width: 1.5rem;
+            width: 7.5vw;
             height: 1.2rem;
             background-color: blanchedalmond;
             border: solid 2px burlywood;
@@ -56,5 +56,24 @@
             content:'2';
             position: absolute;
         }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .boxLabel{
+        height: 2rem !important;
+        width: 4vw !important;
+        font-size: x-large;
+
+    }
+
+    .boxLabelChecked{
+        font-size: large !important;
+    }
+
+    .boxLabelChecked::after{
+        border: solid 3px red !important;
+        height: 1.75rem !important;
+        width: 1.75rem !important;
     }
 }

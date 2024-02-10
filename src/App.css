@@ -5,10 +5,10 @@
   box-sizing: border-box;
   height: 100vh;
   text-align: center;
-  background-image: url('../public/assets/Sfondo_TT_sottengopp.png');
+  background-image: url('../public/assets/taglialatombola_background_image.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-attachment: fixed;
 }
 
