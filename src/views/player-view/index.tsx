@@ -2,9 +2,12 @@ import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import * as player from "../../slice/player-slice";
 import PlayerViewComponent from "./player-view";
 import * as modal from "../../slice/modal-slice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 function PlayerView() {
+  const navigate: NavigateFunction = useNavigate();
+
   const dispatch = useAppDispatch();
 
   const [isRestartModalOpen, setIsRestartModalOpen] = useState<boolean>(false);
@@ -12,6 +15,12 @@ function PlayerView() {
   const cardsStructure: player.PlayerNumber[][][] = useAppSelector(
     player.selectCardsStructure
   );
+
+  useEffect(() => {
+    cardsStructure[0][0].length || navigate("/tymbola/");
+  }, [cardsStructure, navigate]);
+
+  // cardsStructure[0][0].length || navigate("/tymbola/");
 
   const handleRestartModalOpen = (): void => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });

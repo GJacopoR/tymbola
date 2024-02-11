@@ -39,6 +39,10 @@
         justify-content: center;
         width: 100%;
 
+        .cardsContainer{
+            max-width: 90vw;
+        }
+
         .restartButton{
             display: flex;
             justify-content: space-evenly;
@@ -57,6 +61,7 @@
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(3, 1fr);
             grid-column-gap: 1rem;
+            max-width: 100% !important;
         }
     }
 }
