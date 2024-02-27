@@ -50,6 +50,8 @@
         transition: .4s;
         border: solid 3px burlywood;
         border-radius: 40px;
+        display: flex;
+        align-items: center;
     }
     
     .slider:before {
@@ -58,7 +60,7 @@
         height: 25px;
         width: 25px;
         left: 1px;
-        bottom: 1px;
+        // bottom: 1px;
         background-color: bisque;
         -webkit-transition: .4s;
         transition: .4s;

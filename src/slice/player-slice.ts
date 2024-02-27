@@ -54,6 +54,25 @@ export const playerSlice = createSlice({
 
             // then we push a number from remainings array for each card as long as every card arrives at length 15
             for (let i = 0; i < action.payload; i++) {
+                const decades = new Map<number, number>();
+
+                allCards[i].forEach((number) => {
+                    const decade = Math.floor(number / 10);
+                    const decadeCount = decades.get(decade) || 0;
+                    decades.set(decade, decadeCount + 1);
+                })
+
+                // while (allCards[i].length < 15) {
+                //     const selectedNumberIndex: number = Math.floor(
+                //         Math.random() * remainings.length
+                //     );
+                //     const selectedNumber: number = remainings.splice(
+                //         selectedNumberIndex,
+                //         1
+                //     )[0];
+                //     allCards[i].push(selectedNumber);
+                // }
+
                 while (allCards[i].length < 15) {
                     const selectedNumberIndex: number = Math.floor(
                         Math.random() * remainings.length
@@ -62,7 +81,13 @@ export const playerSlice = createSlice({
                         selectedNumberIndex,
                         1
                     )[0];
-                    allCards[i].push(selectedNumber);
+                    const currentDecade = Math.floor(selectedNumber / 10);
+                    const currentDecadeCount = decades.get(currentDecade) || 0;
+
+                    if (currentDecadeCount < 3
+                        || !remainings.filter((remaining) => Math.floor(remaining / 10) !== currentDecade)) {
+                        allCards[i].push(selectedNumber);
+                    }
                 }
             }
 
