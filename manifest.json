@@ -11,7 +11,7 @@
     "start_url": "/tymbola/",
     "background_color": "#242424",
     "theme_color": "#242424",
-    "display_override": ["window-control-overlay", "minimal-ui"],
+    "display_override": ["standalone", "minimal-ui", "browser"],
     "display": "standalone",
     "description": "Clear, fast and easy-to-use Progressive Web Application to play Tombola.",
     "icons": [
