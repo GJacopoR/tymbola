@@ -50,17 +50,33 @@ export const playerSlice = createSlice({
             }
 
             // with remaining numbers, we create a single array.
-            const remainings = repository.flat();
+            const remainings: number[] = repository.flat();
 
-            // then we push a number from remainings array for each card as long as every card arrives at length 15
+            // then we push a number from remainings array for each card as long as every card arrives at length 15 checking if there aren't already three numbers of the same dacade in the current card
             for (let i = 0; i < action.payload; i++) {
-                const decades = new Map<number, number>();
+                const decadesArray: number[] = Array(9).fill(0)
 
                 allCards[i].forEach((number) => {
-                    const decade = Math.floor(number / 10);
-                    const decadeCount = decades.get(decade) || 0;
-                    decades.set(decade, decadeCount + 1);
+                    const decade: number = number === 90 ? 8 : Math.floor(number / 10);
+                    decadesArray[decade]++
                 })
+
+                while (allCards[i].length < 15) {
+                    const selectedNumberIndex: number = Math.floor(Math.random() * remainings.length);
+                    const selectedNumber: number = remainings.splice(selectedNumberIndex, 1)[0];
+                    const currentDecade: number = selectedNumber === 90 ? 8 : Math.floor(selectedNumber / 10);
+                    const currentDecadeCount: number = decadesArray[currentDecade];
+                    const differentDecadeRemainings: number[] =
+                        remainings.filter((remaining) => Math.floor(remaining / 10) !== currentDecade);
+
+                    // the or condition is to prevent infinite loop, a better solution would be checking the cards once the process is finished and retrying if a card is wrong, but we'll think about it later
+                    if (currentDecadeCount < 3 || !differentDecadeRemainings.length) {
+                        allCards[i].push(selectedNumber);
+                        decadesArray[currentDecade]++
+                    } else {
+                        remainings.push(selectedNumber)
+                    }
+                }
 
                 // while (allCards[i].length < 15) {
                 //     const selectedNumberIndex: number = Math.floor(
@@ -72,23 +88,6 @@ export const playerSlice = createSlice({
                 //     )[0];
                 //     allCards[i].push(selectedNumber);
                 // }
-
-                while (allCards[i].length < 15) {
-                    const selectedNumberIndex: number = Math.floor(
-                        Math.random() * remainings.length
-                    );
-                    const selectedNumber: number = remainings.splice(
-                        selectedNumberIndex,
-                        1
-                    )[0];
-                    const currentDecade = Math.floor(selectedNumber / 10);
-                    const currentDecadeCount = decades.get(currentDecade) || 0;
-
-                    if (currentDecadeCount < 3
-                        || !remainings.filter((remaining) => Math.floor(remaining / 10) !== currentDecade)) {
-                        allCards[i].push(selectedNumber);
-                    }
-                }
             }
 
             // finally, we transform those numbers into PlayerNumbers giving them a default false checked value, the value of the number itself, and a column based on their ten
@@ -97,7 +96,7 @@ export const playerSlice = createSlice({
                     .sort((a, b) => a - b)
                     .map((number: number,) => ({
                         checked: false,
-                        column: number === 90 ? 9 : Math.ceil(number / 10),
+                        column: number === 90 ? 9 : Math.floor(number / 10) + 1, // Math.ceil(number / 10),
                         value: number
                     })
                     )
