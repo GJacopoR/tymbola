@@ -18,7 +18,8 @@
       {
         "src": "assets/Taglialatombola_logo_piccolo.png",
         "type": "image/png",
-        "sizes": "192x192"
+        "sizes": "192x192",
+        "purpose": "any"
       },
       {
         "src": "assets/Taglialatombola_logo_grande.png",
