@@ -10,12 +10,17 @@ function Number({ checked, column, value }: player.PlayerNumber) {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(player.switchNumberState(value));
+    dispatch(player.setNumberStateChecked(value));
+  };
+
+  const handleDoubleClick = () => {
+    dispatch(player.setNumberStateUnchecked(value));
   };
 
   return (
     <NumberComponent
       onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
       checked={checked}
       column={column}
       value={value}

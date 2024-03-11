@@ -112,12 +112,24 @@ export const playerSlice = createSlice({
             state.isPlayerGameOngoing = true
         },
 
-        switchNumberState: (state, action: PayloadAction<number>) => {
+        setNumberStateChecked: (state, action: PayloadAction<number>) => {
             for (let i = 0; i < state.cardsStructure.length; i++) {
                 for (let j = 0; j < state.cardsStructure[i].length; j++) {
                     for (let k = 0; k < state.cardsStructure[i][j].length; k++) {
                         if (state.cardsStructure[i][j][k].value === action.payload) {
-                            state.cardsStructure[i][j][k].checked = !state.cardsStructure[i][j][k].checked
+                            state.cardsStructure[i][j][k].checked = true;
+                        }
+                    }
+                }
+            }
+        },
+
+        setNumberStateUnchecked: (state, action: PayloadAction<number>) => {
+            for (let i = 0; i < state.cardsStructure.length; i++) {
+                for (let j = 0; j < state.cardsStructure[i].length; j++) {
+                    for (let k = 0; k < state.cardsStructure[i][j].length; k++) {
+                        if (state.cardsStructure[i][j][k].value === action.payload) {
+                            state.cardsStructure[i][j][k].checked = false;
                         }
                     }
                 }
@@ -141,7 +153,7 @@ export const playerSlice = createSlice({
     },
 })
 
-export const { setRandomNumbers, setSavedNumbers, switchNumberState, resetCardsStates, setEndGame } = playerSlice.actions
+export const { setRandomNumbers, setSavedNumbers, setNumberStateChecked, setNumberStateUnchecked, resetCardsStates, setEndGame } = playerSlice.actions
 
 export const selectCardsStructure = (state: RootState) => state.player.cardsStructure;
 

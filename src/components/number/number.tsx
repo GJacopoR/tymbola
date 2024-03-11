@@ -1,28 +1,30 @@
-import { ChangeEvent } from "react";
 import { PlayerNumber } from "../../slice/player-slice";
 import classes from "./number.module.scss";
 
 interface NumberProps extends PlayerNumber {
-  onClick: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onDoubleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   // onDoubleClick: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Number({ checked, onClick, value }: NumberProps) {
+function Number({ checked, onClick, onDoubleClick, value }: NumberProps) {
   return (
     <div className={classes.boxContainer}>
-      <label
+      <button
         className={`${classes.label} ${checked && classes.checkedLabel}`}
-        htmlFor={`numberCheckbox_${value}`}
+        onClick={onClick}
+        onDoubleClick={onDoubleClick}
+        // htmlFor={`numberCheckbox_${value}`}
       >
         {value}
-      </label>
+      </button>
 
-      <input
+      {/* <input
         checked={checked}
         id={`numberCheckbox_${value}`}
         onChange={onClick}
         type="checkbox"
-      />
+      /> */}
 
       <span
         className={`${classes.fakeLabel} ${
