@@ -60,20 +60,24 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .boxLabel{
-        height: 2rem !important;
-        width: 4vw !important;
-        font-size: x-large;
-
-    }
-
-    .boxLabelChecked{
-        font-size: large !important;
-    }
-
-    .boxLabelChecked::after{
-        border: solid 3px red !important;
-        height: 1.75rem !important;
-        width: 1.75rem !important;
+    .card {
+        .boxContainer{
+            .boxLabel{
+                height: 2rem;
+                width: 4vw;
+                font-size: x-large;
+        
+            }
+        
+            .boxLabelChecked{
+                font-size: large;
+            }
+        
+            .boxLabelChecked::after{
+                border: solid 3px red;
+                height: 1.75rem;
+                width: 1.75rem;
+            }
+        }
     }
 }

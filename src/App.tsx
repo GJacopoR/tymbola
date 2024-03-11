@@ -6,6 +6,8 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import PlayerView from "./views/player-view";
 import { AnimatePresence } from "framer-motion";
 
+export const SMALL_DESKTOP_MIN_WIDTH = 1024;
+
 function App() {
   const location = useLocation();
 

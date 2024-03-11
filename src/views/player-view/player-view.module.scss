@@ -40,7 +40,12 @@
         width: 100%;
 
         .cardsContainer{
-            max-width: 90vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // max-width: 90vw;
+            width: 100%;
         }
 
         .restartButton{
@@ -52,16 +57,27 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .viewContainer{
 
-    .bodyContainer{
-        height: 90vh;
+        .saveButton {
+            height: 3.5rem;
+            width: 3.5rem;
 
-        .cardsContainer{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            grid-column-gap: 1rem;
-            max-width: 100% !important;
+            & svg {
+                width: 2rem;
+                margin-left: 1px;
+            }
+        }
+
+        .bodyContainer{
+            height: 90vh;
+    
+            .cardsContainer{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                grid-column-gap: 1rem;
+            }
         }
     }
 }

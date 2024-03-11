@@ -4,6 +4,7 @@ import * as caller from "../../slice/caller-slice";
 import * as modal from "../../slice/modal-slice";
 import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import { useEffect } from "react";
+import { useIsFirstRender } from "../../assets/useIsFirstRender";
 
 function CallerView() {
   const utterance: SpeechSynthesisUtterance = new SpeechSynthesisUtterance();
@@ -27,11 +28,10 @@ function CallerView() {
   console.log(window.speechSynthesis.getVoices());
 
   const dispatch = useAppDispatch();
+  const isFirstRender = useIsFirstRender();
 
   const history: caller.TombolaNumber[] = useAppSelector(caller.selectHistory);
-
   const isSmorfiaMode: boolean = useAppSelector(caller.selectIsSmorfiaMode);
-
   const repository: caller.TombolaNumber[] = useAppSelector(
     caller.selectRepository
   );
@@ -54,7 +54,7 @@ function CallerView() {
   };
 
   useEffect(() => {
-    if (lastTombolaNumber) {
+    if (lastTombolaNumber && !isFirstRender) {
       const string = String(lastTombolaNumber.number);
       const smorfiaString = `${lastTombolaNumber.pronunciation},  ${lastTombolaNumber.smorfia_meaning}`;
       history.length && callNumber(isSmorfiaMode ? smorfiaString : string);

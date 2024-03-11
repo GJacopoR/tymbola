@@ -6,6 +6,7 @@ import classes from "./player-view.module.scss";
 import Button from "../../components/button";
 import SaveCardsModal from "../../components/save-cards-modal";
 import RestartModal from "../../components/restart-modal";
+import { SMALL_DESKTOP_MIN_WIDTH } from "../../App";
 
 interface PlayerViewProps {
   cardsStructure: player.PlayerNumber[][][];
@@ -21,10 +22,15 @@ function PlayerView({
   onRestartClick,
   onSaveClick,
 }: PlayerViewProps): JSX.Element {
+  const isDesktopMode = window.innerWidth > SMALL_DESKTOP_MIN_WIDTH;
+
   return (
     <PageTransition isDirectionBack={true}>
       <section className={classes.viewContainer}>
-        <BackButton className={classes.backButton} size="small" />
+        <BackButton
+          className={classes.backButton}
+          size={isDesktopMode ? "large" : "small"}
+        />
         <Button
           className={classes.saveButton}
           onClick={onSaveClick}
