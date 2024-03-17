@@ -81,16 +81,6 @@ function PlayerView({
           {isTombola && (
             <Fireworks
               options={fireworksOptions}
-              // style={{
-              //   backgroundColor: "none",
-              //   width: "100%",
-              //   height: "100%",
-              //   position: "fixed",
-              //   top: 0,
-              //   left: 0,
-              //   zIndex: 5,
-              //   maxHeight: "100%",
-              // }}
               className={classes.fireworks}
             />
           )}
@@ -101,7 +91,13 @@ function PlayerView({
                 <div className={classes.cardContainer} key={i + "_player_card"}>
                   <Card cardStructure={cardStructure} />
 
-                  <div className={classes.isWinnerModeContainer}>
+                  <div
+                    className={
+                      i === cardsStructure.length - 1
+                        ? classes.isWinnerModeReversedContainer
+                        : classes.isWinnerModeContainer
+                    }
+                  >
                     <p className={classes.isWinnerModeQuestion}>
                       Hai davvero fatto tombola?
                     </p>

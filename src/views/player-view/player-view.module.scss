@@ -71,7 +71,7 @@
                 align-items: center;
                 position: relative;
 
-                .isWinnerModeContainer{
+                .isWinnerModeContainer, .isWinnerModeReversedContainer{
                     position: absolute;
                     z-index: 3;
                     bottom: -3rem;
@@ -101,6 +101,12 @@
                         align-items: center;
                     }
                 }
+
+                .isWinnerModeReversedContainer{
+                    bottom: unset;
+                    top: -3rem;
+                }
+
                 .isWinnerModeContainer::before{
                     content: '';
                     position: absolute;
@@ -109,6 +115,16 @@
                     border: 0.5rem solid transparent;
                     border-top: 0;
                     border-bottom: 1rem solid burlywood;
+                }
+
+                .isWinnerModeReversedContainer::before{
+                    content: '';
+                    position: absolute;
+                    z-index: 3;
+                    top: 2.4rem;
+                    border: 0.5rem solid transparent;
+                    border-top: 1rem solid burlywood;
+                    border-bottom: 0;
                 }
 
             }
