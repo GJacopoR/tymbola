@@ -7,22 +7,33 @@ import Button from "../../components/button";
 import SaveCardsModal from "../../components/save-cards-modal";
 import RestartModal from "../../components/restart-modal";
 import { SMALL_DESKTOP_MIN_WIDTH } from "../../App";
+import Fireworks, { FireworksOptions } from "@fireworks-js/react";
 
 interface PlayerViewProps {
   cardsStructure: player.PlayerNumber[][][];
+  fireworksOptions: FireworksOptions;
   isRestartModalOpen: boolean;
   onRestartClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onSaveClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  setIsTombola: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  setIsNotTombola: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  winnerMode: player.WinnerMode;
   // getCardStructure: (card: player.PlayerNumber[]) => player.PlayerNumber[][];
 }
 
 function PlayerView({
   cardsStructure,
+  fireworksOptions,
   isRestartModalOpen,
   onRestartClick,
   onSaveClick,
+  setIsTombola,
+  setIsNotTombola,
+  winnerMode,
 }: PlayerViewProps): JSX.Element {
   const isDesktopMode = window.innerWidth > SMALL_DESKTOP_MIN_WIDTH;
+
+  const { isTombola, isWinnerMode, winningCard } = winnerMode;
 
   return (
     <PageTransition isDirectionBack={true}>
@@ -67,10 +78,49 @@ function PlayerView({
         />
 
         <main className={classes.bodyContainer}>
+          {isTombola && (
+            <Fireworks
+              options={fireworksOptions}
+              // style={{
+              //   backgroundColor: "none",
+              //   width: "100%",
+              //   height: "100%",
+              //   position: "fixed",
+              //   top: 0,
+              //   left: 0,
+              //   zIndex: 5,
+              //   maxHeight: "100%",
+              // }}
+              className={classes.fireworks}
+            />
+          )}
+
           <section className={classes.cardsContainer}>
-            {cardsStructure.map((cardStructure, i) => (
-              <Card key={i + "_player_card"} cardStructure={cardStructure} />
-            ))}
+            {cardsStructure.map((cardStructure, i) =>
+              isWinnerMode && winningCard === i ? (
+                <div className={classes.cardContainer} key={i + "_player_card"}>
+                  <Card cardStructure={cardStructure} />
+
+                  <div className={classes.isWinnerModeContainer}>
+                    <p className={classes.isWinnerModeQuestion}>
+                      Hai davvero fatto tombola?
+                    </p>
+                    <Button
+                      label="si"
+                      className={classes.isWinnerModeButtons}
+                      onClick={setIsTombola}
+                    />
+                    <Button
+                      label="no"
+                      className={classes.isWinnerModeButtons}
+                      onClick={setIsNotTombola}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <Card key={i + "_player_card"} cardStructure={cardStructure} />
+              )
+            )}
           </section>
 
           <Button

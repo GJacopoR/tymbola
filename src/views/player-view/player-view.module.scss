@@ -5,6 +5,7 @@
         position: absolute;
         left: 10px;
         top: 0;
+        z-index: 6;
     }
 
     .saveButton{
@@ -39,6 +40,21 @@
         justify-content: center;
         width: 100%;
 
+        .fireworks{
+            // background-color: none;
+            backdrop-filter: blur(1px) brightness(60%);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            max-height: 100%;
+            animation-duration: 0.5s;
+            animation-name: animate-fade;
+            animation-fill-mode: backwards;
+        }
+
         .cardsContainer{
             display: flex;
             flex-direction: column;
@@ -46,19 +62,69 @@
             align-items: center;
             // max-width: 90vw;
             width: 100%;
+
+            .cardContainer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+
+                .isWinnerModeContainer{
+                    position: absolute;
+                    z-index: 3;
+                    bottom: -3rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: burlywood;
+                    border: dashed 3px var(--brown-border);
+                    height: 2.5rem;
+                    padding: 0 0.5rem;
+                    border-radius: 0.5rem;
+
+                    .isWinnerModeQuestion{
+                        font-family: 'Sansita', sans-serif;
+                        letter-spacing: 2px;
+                        font-size: small;
+                        font-weight: 800;
+                        color: red;
+                        text-wrap: nowrap;
+                    }
+    
+                    .isWinnerModeButtons{
+                        width: 3rem;
+                        height: 2rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+                .isWinnerModeContainer::before{
+                    content: '';
+                    position: absolute;
+                    z-index: 3;
+                    top: -0.9rem;
+                    border: 0.5rem solid transparent;
+                    border-top: 0;
+                    border-bottom: 1rem solid burlywood;
+                }
+
+            }
         }
 
         .restartButton{
             display: flex;
             justify-content: space-evenly;
             align-items: center;
+            z-index: 6;
         }
     }
 }
 
 @media screen and (min-width: 1024px) {
     .viewContainer{
-
         .saveButton {
             height: 3.5rem;
             width: 3.5rem;
@@ -77,7 +143,20 @@
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(3, 1fr);
                 grid-column-gap: 1rem;
+
+                .cardContainer{
+                    .isWinnerModeContainer{
+                        .isWinnerModeQuestion{
+                            font-size: larger;
+                        }
+                    }
+                }
             }
         }
     }
+}
+
+@keyframes animate-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

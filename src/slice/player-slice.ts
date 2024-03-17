@@ -9,14 +9,23 @@ export interface PlayerNumber {
     value: number,
 }
 
+export interface WinnerMode {
+    isTombola?: boolean,
+    isWinnerMode: boolean,
+    winningCard?: number,
+    winningNumber?: number
+}
+
 export interface PlayerSlice {
-    isPlayerGameOngoing: boolean,
     cardsStructure: PlayerNumber[][][]
+    isPlayerGameOngoing: boolean,
+    winnerMode: WinnerMode
 }
 
 const initialState: PlayerSlice = {
-    isPlayerGameOngoing: false,
     cardsStructure: [[[]]],
+    isPlayerGameOngoing: false,
+    winnerMode: { isWinnerMode: false }
 }
 
 export const playerSlice = createSlice({
@@ -120,6 +129,10 @@ export const playerSlice = createSlice({
                             state.cardsStructure[i][j][k].checked = true;
                         }
                     }
+
+                }
+                if (state.cardsStructure[i].flat().filter(number => number.checked === true).length === 15) {
+                    state.winnerMode = { isWinnerMode: true, winningCard: i, winningNumber: action.payload }
                 }
             }
         },
@@ -134,6 +147,7 @@ export const playerSlice = createSlice({
                     }
                 }
             }
+            state.winnerMode = { isWinnerMode: false }
         },
 
         resetCardsStates: (state) => {
@@ -144,20 +158,28 @@ export const playerSlice = createSlice({
                     }
                 }
             }
+            state.winnerMode = { isWinnerMode: false }
         },
 
         setEndGame: (state) => {
             state.cardsStructure = [[[]]]
             state.isPlayerGameOngoing = false
+            state.winnerMode = { isWinnerMode: false }
         },
+
+        setIsTombola: (state) => {
+            state.winnerMode.isTombola = true;
+        }
     },
 })
 
-export const { setRandomNumbers, setSavedNumbers, setNumberStateChecked, setNumberStateUnchecked, resetCardsStates, setEndGame } = playerSlice.actions
+export const { setRandomNumbers, setSavedNumbers, setNumberStateChecked, setNumberStateUnchecked, resetCardsStates, setEndGame, setIsTombola } = playerSlice.actions
 
 export const selectCardsStructure = (state: RootState) => state.player.cardsStructure;
 
 export const selectIsPlayerGameOngoing = (state: RootState) => state.player.isPlayerGameOngoing;
+
+export const selectWinnerMode = (state: RootState) => state.player.winnerMode;
 
 export default playerSlice.reducer
 
