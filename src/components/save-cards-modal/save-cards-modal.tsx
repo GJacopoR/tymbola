@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Button from "../button";
 import CloseButton from "../close-button";
 import classes from "./save-cards-modal.module.scss";
@@ -10,6 +11,8 @@ interface SaveCardsModalProps {
 }
 
 function SaveCardsModal({ isModalOpen, onClose, onSave }: SaveCardsModalProps) {
+  const { t } = useTranslation();
+
   return (
     <AnimatePresence>
       {isModalOpen && (
@@ -35,16 +38,19 @@ function SaveCardsModal({ isModalOpen, onClose, onSave }: SaveCardsModalProps) {
 
             <header className={classes.header}>
               <h4 className={classes.title}>
-                Sei sicuro di voler salvare le cartelle attuali?
+                {t("playerView.saveModal.saveMessage")}
               </h4>
               <p className={classes.subTitle}>
-                Eventuali cartelle già salvate verranno sovrascritte
+                {t("playerView.saveModal.saveSubmessage")}
               </p>
             </header>
 
             <main>
-              <Button label="Sì, salva" onClick={onSave} />
-              <Button label="No, indietro" onClick={onClose} />
+              <Button
+                label={t("playerView.saveModal.saveButton")}
+                onClick={onSave}
+              />
+              <Button label={t("commons.noBackButton")} onClick={onClose} />
             </main>
           </motion.main>
         </aside>

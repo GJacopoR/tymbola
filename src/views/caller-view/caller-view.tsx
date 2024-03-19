@@ -7,6 +7,7 @@ import SliderButton from "../../components/slider-button";
 import CallerCard from "../../components/caller-card";
 import RestartModal from "../../components/restart-modal";
 import PageTransition from "../../assets/page-transition";
+import { useTranslation } from "react-i18next";
 
 interface CallerViewProps {
   callerCards: number[][];
@@ -28,6 +29,8 @@ function CallerView({
   onRestartClick,
   onSwitchClick,
 }: CallerViewProps) {
+  const { t } = useTranslation();
+
   return (
     <PageTransition isDirectionBack={true}>
       <section className={classes.callerSection}>
@@ -36,7 +39,7 @@ function CallerView({
           <SliderButton
             checkboxId={"smorfiaModeSwitch"}
             isChecked={isSmorfiaMode}
-            label={"Smorfia mode"}
+            label={t("callerView.smorfiaMode")}
             onSwitchClick={onSwitchClick}
           />
         </nav>
@@ -60,13 +63,13 @@ function CallerView({
             <aside className={classes.buttonsContainer}>
               <Button
                 className={classes.button}
-                label="Chiama"
+                label={t("callerView.callButton")}
                 onClick={onCallClick}
               />
               <Button
                 className={classes.button}
                 disabled={!history.length}
-                label="Ripeti"
+                label={t("callerView.repeatButton")}
                 onClick={onRepeatClick}
               />
             </aside>
@@ -80,7 +83,7 @@ function CallerView({
             <Button
               className={classes.restartButton}
               disabled={!history.length}
-              label="FINE PARTITA"
+              label={t("commons.endGame").toUpperCase()}
               onClick={onRestartClick}
               children={
                 <svg

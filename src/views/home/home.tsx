@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import classes from "./home.module.scss";
 import CardSelectorModal from "../../components/card-selector-modal";
-import Button from "../../components/button";
+import Button from "src/components/button";
 import Header from "../../components/header";
 import PageTransition from "../../assets/page-transition";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "src/components/language-selector";
 
 interface HomeComponentProps {
   isCallerGameOngoing: boolean;
@@ -23,6 +25,8 @@ function Home({
   onGameReturn,
   onModalOpen,
 }: HomeComponentProps): JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <PageTransition>
       <main>
@@ -30,6 +34,7 @@ function Home({
         <header>
           <Header />
         </header>
+
         <main className={classes.bodyContainer}>
           <section className={classes.startGameSection}>
             <section className={classes.buttons}>
@@ -37,17 +42,19 @@ function Home({
                 <Button
                   className={classes.button}
                   disabled={isCallerGameOngoing || isPlayerGameOngoing}
-                  label={"Tenitore \n (chi chiama)"}
+                  label={t("home.callerButton")}
                 />
               </Link>
 
               <Button
                 className={classes.button}
                 disabled={isCallerGameOngoing || isPlayerGameOngoing}
-                label={"Giocatore \n (chi spunta)"}
+                label={t("home.playerButton")}
                 onClick={onModalOpen}
               />
             </section>
+
+            <LanguageSelector />
           </section>
 
           <AnimatePresence>
@@ -81,29 +88,31 @@ function Home({
                     </svg>
 
                     <h4 className={classes.alertTitle}>
-                      {`C'è una partita ${
-                        isCallerGameOngoing ? "tenitore" : "giocatore"
-                      } attualmente in corso.`}
+                      {t("home.ongoingGameMessage").replace(
+                        "{{PLAYER_TYPE}}",
+                        isCallerGameOngoing
+                          ? t("commons.caller").toLowerCase()
+                          : t("commons.player").toLowerCase()
+                      )}
                     </h4>
 
                     {!isCallerGameOngoing && (
                       <p className={classes.alertSubTitle}>
-                        Terminandola, eventuali cartelle non salvate andranno
-                        perse.
+                        {t("home.ongoingGameSubmessage")}
                       </p>
                     )}
                   </header>
 
                   <Button
                     className={classes.button}
-                    label={"Termina partita"}
+                    label={t("home.endGameButton")}
                     onClick={
                       isCallerGameOngoing ? onEndCallerGame : onEndPlayerGame
                     }
                   />
                   <Button
                     className={classes.button}
-                    label={"Vai alla partita"}
+                    label={t("home.returnGameButton")}
                     onClick={onGameReturn}
                   />
                 </motion.section>

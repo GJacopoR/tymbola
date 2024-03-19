@@ -5,4 +5,10 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   base: '/tymbola/',
   plugins: [react()],
+  resolve: {
+    alias: {
+      src: "/src",
+      public: "/public"
+    },
+  },
 })

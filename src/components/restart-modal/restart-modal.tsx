@@ -2,6 +2,7 @@ import Button from "../button";
 import { AnimatePresence, motion } from "framer-motion";
 import classes from "./restart-modal.module.scss";
 import CloseButton from "../close-button";
+import { useTranslation } from "react-i18next";
 
 interface CardSelectorModalProps {
   isModalOpen: boolean;
@@ -14,6 +15,8 @@ function CardSelectorModal({
   onClose,
   onRestart,
 }: CardSelectorModalProps) {
+  const { t } = useTranslation();
+
   return (
     <AnimatePresence>
       {isModalOpen && (
@@ -39,16 +42,19 @@ function CardSelectorModal({
 
             <header className={classes.header}>
               <h4 className={classes.title}>
-                {`Sei sicuro di voler concludere la partita corrente?`}
+                {t("commons.endGameModal.endGameMessage")}
               </h4>
               <p className={classes.subTitle}>
-                {`Le cartelle verranno resettate`}
+                {t("commons.endGameModal.endGameSubmessage")}
               </p>
             </header>
 
             <main>
-              <Button label="Sì, concludi" onClick={onRestart} />
-              <Button label="No, indietro" onClick={onClose} />
+              <Button
+                label={t("commons.endGameModal.endGameButton")}
+                onClick={onRestart}
+              />
+              <Button label={t("commons.noBackButton")} onClick={onClose} />
             </main>
           </motion.main>
         </aside>

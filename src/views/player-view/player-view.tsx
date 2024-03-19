@@ -8,6 +8,7 @@ import SaveCardsModal from "../../components/save-cards-modal";
 import RestartModal from "../../components/restart-modal";
 import { SMALL_DESKTOP_MIN_WIDTH } from "../../App";
 import Fireworks, { FireworksOptions } from "@fireworks-js/react";
+import { useTranslation } from "react-i18next";
 
 interface PlayerViewProps {
   cardsStructure: player.PlayerNumber[][][];
@@ -31,6 +32,8 @@ function PlayerView({
   setIsNotTombola,
   winnerMode,
 }: PlayerViewProps): JSX.Element {
+  const { t } = useTranslation();
+
   const isDesktopMode = window.innerWidth > SMALL_DESKTOP_MIN_WIDTH;
 
   const { isTombola, isWinnerMode, winningCard } = winnerMode;
@@ -99,15 +102,15 @@ function PlayerView({
                     }
                   >
                     <p className={classes.isWinnerModeQuestion}>
-                      Hai davvero fatto tombola?
+                      {t("playerView.winnerModeMessage")}
                     </p>
                     <Button
-                      label="si"
+                      label={t("commons.yes")}
                       className={classes.isWinnerModeButtons}
                       onClick={setIsTombola}
                     />
                     <Button
-                      label="no"
+                      label={t("commons.no")}
                       className={classes.isWinnerModeButtons}
                       onClick={setIsNotTombola}
                     />
@@ -122,7 +125,7 @@ function PlayerView({
           <Button
             className={classes.restartButton}
             // disabled={!history.length}
-            label="FINE PARTITA"
+            label={t("commons.endGame").toUpperCase()}
             onClick={onRestartClick}
             children={
               <svg
