@@ -4,6 +4,8 @@ import Button from "../button";
 import classes from "./card-selector-modal.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseButton from "../close-button";
+import { useTranslation } from "react-i18next";
+import { TFunction } from "i18next";
 
 const MAX_CARDS_PER_PLAYER: number = 6;
 
@@ -28,6 +30,8 @@ function CardSelectorModal({
   onNewCardsClick,
   onNewCardsNumberClick,
 }: CardSelectorModalProps): JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <AnimatePresence>
       {isModalOpen && (
@@ -64,7 +68,8 @@ function CardSelectorModal({
               bodySelectionContent,
               onLoad,
               onNewCardsClick,
-              onNewCardsNumberClick
+              onNewCardsNumberClick,
+              t
             )}
           </motion.main>
         </aside>
@@ -80,14 +85,15 @@ function getBodyContent(
   bodySelectionContent: "options" | "new" | "load" | "create",
   onLoad: (e: React.MouseEvent<HTMLButtonElement>) => void,
   onNewCardsClick: (e: React.MouseEvent<HTMLButtonElement>) => void,
-  onNewCardsNumberClick: (cardsNumber: number) => void
+  onNewCardsNumberClick: (cardsNumber: number) => void,
+  t: TFunction<"translation", undefined>
 ): JSX.Element {
   switch (bodySelectionContent) {
     case "new":
       return (
         <section className={classes.modalBody}>
           <header className={classes.header}>
-            {`Quante cartelle creare?`}
+            {t("home.cardSelectorModal.newCardsMessage")}
           </header>
 
           <main className={classes.cardsNumberSelectorContainer}>
@@ -119,19 +125,25 @@ function getBodyContent(
       return (
         <section className={classes.modalBody}>
           <header className={classes.header}>
-            {`Come selezionare le cartelle?`}
+            {t("home.cardSelectorModal.baseMessage")}
           </header>
 
           <main className={classes.defaultContent}>
-            <Button label="Nuove cartelle" onClick={onNewCardsClick} />
+            <Button
+              label={t("home.cardSelectorModal.newCardsButton")}
+              onClick={onNewCardsClick}
+            />
             <Link to={"/tymbola/player"}>
               <Button
-                label="Carica salvate"
+                label={t("home.cardSelectorModal.loadCardsButton")}
                 disabled={!areCardsSaved}
                 onClick={onLoad}
               />
             </Link>
-            <Button label="Scegli numeri" disabled />
+            <Button
+              label={t("home.cardSelectorModal.chooseCardsButton")}
+              disabled
+            />
           </main>
         </section>
       );

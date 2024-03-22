@@ -10,7 +10,7 @@ export const itLanguage = {
             baseMessage: "Come selezionare le cartelle?",
             newCardsButton: "Nuove cartelle",
             loadCardsButton: "Carica cartelle",
-            chooseCardsButton: "Scelgi numeri",
+            chooseCardsButton: "Scegli numeri",
             newCardsMessage: "Quante cartelle vuoi creare?"
         }
     },

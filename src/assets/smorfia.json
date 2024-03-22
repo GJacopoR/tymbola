@@ -1,109 +1,815 @@
 {
-    "numbers" : {
-        "1":{
-            "number" : 1,
-            "pronunciation" : "Une",
-            "smorfia_meaning" : "L'Italia"
-        },
-        "2":{
-            "number" : 2,
-            "pronunciation" : "Roie",
-            "smorfia_meaning" : "'A peccerèll, la bambina"
-        },
-        "3":{
-            "number" : 3,
-            "pronunciation" : "Ttre",
-            "smorfia_meaning" : "'A iàtta, il gatto"
-        },
-        "4":{
-            "number" : 4,
-            "pronunciation" : "Quatt",
-            "smorfia_meaning" : "'O puórc, il porco"
-        },
-        "5":{
-            "number" : 5,
-            "pronunciation" : "Cinck",
-            "smorfia_meaning" : "'A mana, la mano"
-        },
-        "6":{
-            "number" : 6,
-            "pronunciation" : "Seie",
-            "smorfia_meaning" : "'Chéll ca uard ndérr, quella che guarda a terra"
-        },
-        "7":{
-            "number" : 7,
-            "pronunciation" : "Sètt",
-            "smorfia_meaning" : "'O vasétt, il vasetto"
-        },
-        "8":{
-            "number" : 8,
-            "pronunciation" : "òtte",
-            "smorfia_meaning" : "'A Marònn, la Madonna"
-        },
-        "9":{
-            "number" : 9,
-            "pronunciation" : "Nòve",
-            "smorfia_meaning" : "'A figliàt, la figliolanza"
-        },
-        "10":{
-            "number" : 10,
-            "pronunciation" : "Diece",
-            "smorfia_meaning" : "'E fasùl, i fagioli"
-        },
-        "11":{
-            "number" : 11,
-            "pronunciation" : "ùnnece",
-            "smorfia_meaning" : "'E sùrice, i topini"
-        },
-        "12":{
-            "number" : 12,
-            "pronunciation" : "Dórece",
-            "smorfia_meaning" : "'E surdàt, i soldati"
-        },
-        "13":{
-            "number" : 13,
-            "pronunciation" : "Trìrece",
-            "smorfia_meaning" : "Sant'Antonie, Sant'Antonio"
-        },
-        "14":{
-            "number" : 14,
-            "pronunciation" : "Quattuórdece",
-            "smorfia_meaning" : "'O mbriàc, l'ubriaco'"
-        },
-        "15":{
-            "number" : 15,
-            "pronunciation" : "Quìnnece",
-            "smorfia_meaning" : "'O uaglióne, il ragazzo"
-        },
-        "16":{
-            "number" : 16,
-            "pronunciation" : "Sìrece",
-            "smorfia_meaning" : "'O cul, il culo"
-        },
-        "17":{
-            "number" : 17,
-            "pronunciation" : "Dicessètte",
-            "smorfia_meaning" : "'A disgràzie, la sfortuna"
-        },
-        "18":{
-            "number" : 18,
-            "pronunciation" : "Diciòtt",
-            "smorfia_meaning" : "'O sàng, il sangue"
-        },
-        "19":{
-            "number" : 19,
-            "pronunciation" : "Dicennòv",
-            "smorfia_meaning" : "'A resàt, la risata"
-        },
-        "20":{
-            "number" : 20,
-            "pronunciation" : "Vint",
-            "smorfia_meaning" : "'A fèst, la festa"
-        },
-        "21":{
-            "number" : 21,
-            "pronunciation" : "Vintùn",
-            "smorfia_meaning" : "'A fèmmena annura, la donna nuda"
-        }
+  "numbers": {
+    "1": {
+      "number": 1,
+      "pronunciation": "Une",
+      "smorfia_meaning": "'L'Italia",
+      "it_meaning": "L'Italia",
+      "en_meaning": "Italy",
+      "es_meaning": "Italia",
+      "jp_meaning": "イタリア"
+    },
+    "2": {
+      "number": 2,
+      "pronunciation": "Roie",
+      "smorfia_meaning": "'A peccerèll",
+      "it_meaning": "La bambina",
+      "en_meaning": "The little girl",
+      "es_meaning": "La niña",
+      "jp_meaning": "女の子供"
+    },
+    "3": {
+      "number": 3,
+      "pronunciation": "Ttre",
+      "smorfia_meaning": "'A iàtta",
+      "it_meaning": "Il gatto",
+      "en_meaning": "The cat",
+      "es_meaning": "El gato",
+      "jp_meaning": "猫"
+    },
+    "4": {
+      "number": 4,
+      "pronunciation": "Quatt",
+      "smorfia_meaning": "'O puórc",
+      "it_meaning": "Il maiale",
+      "en_meaning": "The pig",
+      "es_meaning": "El cerdo",
+      "jp_meaning": "豚"
+    },
+    "5": {
+      "number": 5,
+      "pronunciation": "Cinck",
+      "smorfia_meaning": "'A mana",
+      "it_meaning": "La mano",
+      "en_meaning": "The hand",
+      "es_meaning": "La mano",
+      "jp_meaning": "手"
+    },
+    "6": {
+      "number": 6,
+      "pronunciation": "Seie",
+      "smorfia_meaning": "'Chéll ca uard ndérr",
+      "it_meaning": "Quella che guarda a terra",
+      "en_meaning": "She who looks at the ground",
+      "es_meaning": "El que mira hacia el suelo",
+      "jp_meaning": "見下している人"
+    },
+    "7": {
+      "number": 7,
+      "pronunciation": "Sètt",
+      "smorfia_meaning": "'O vasétt",
+      "it_meaning": "Il vasetto",
+      "en_meaning": "Pot",
+      "es_meaning": "El frasco",
+      "jp_meaning": "ポット"
+    },
+    "8": {
+      "number": 8,
+      "pronunciation": "òtte",
+      "smorfia_meaning": "'A Marònn",
+      "it_meaning": "La Madonna",
+      "en_meaning": "Virgin Mary",
+      "es_meaning": "Virgen",
+      "jp_meaning": "マドンナ"
+    },
+    "9": {
+      "number": 9,
+      "pronunciation": "Nòve",
+      "smorfia_meaning": "'A figliàt",
+      "it_meaning": "La figliolanza",
+      "en_meaning": "The offspring",
+      "es_meaning": "La filiación",
+      "jp_meaning": "息子の身分"
+    },
+    "10": {
+      "number": 10,
+      "pronunciation": "Diece",
+      "smorfia_meaning": "'E fasùl",
+      "it_meaning": "I fagioli",
+      "en_meaning": "Beans",
+      "es_meaning": "Los frijoles",
+      "jp_meaning": "豆"
+    },
+    "11": {
+      "number": 11,
+      "pronunciation": "ùnnece",
+      "smorfia_meaning": "'E sùrice",
+      "it_meaning": "I topini",
+      "en_meaning": "Mice",
+      "es_meaning": "Los ratones",
+      "jp_meaning": "ネズミたち"
+    },
+    "12": {
+      "number": 12,
+      "pronunciation": "Dórece",
+      "smorfia_meaning": "'E surdàt",
+      "it_meaning": "I soldati",
+      "en_meaning": "The soldiers",
+      "es_meaning": "Los soldados",
+      "jp_meaning": "兵士"
+    },
+    "13": {
+      "number": 13,
+      "pronunciation": "Trìrece",
+      "smorfia_meaning": "Sant'Antonie",
+      "it_meaning": "Sant'Antonio",
+      "en_meaning": "Saint Anthony",
+      "es_meaning": "San antonio",
+      "jp_meaning": "聖アントニオ"
+    },
+    "14": {
+      "number": 14,
+      "pronunciation": "Quattuórdece",
+      "smorfia_meaning": "'O mbriàc'",
+      "it_meaning": "L'ubriaco",
+      "en_meaning": "The drunkard",
+      "es_meaning": "El borracho",
+      "jp_meaning": "酔っ払い"
+    },
+    "15": {
+      "number": 15,
+      "pronunciation": "Quìnnece",
+      "smorfia_meaning": "'O uaglióne",
+      "it_meaning": "Il ragazzo",
+      "en_meaning": "The boy",
+      "es_meaning": "El chico",
+      "jp_meaning": "男の子"
+    },
+    "16": {
+      "number": 16,
+      "pronunciation": "Sìrece",
+      "smorfia_meaning": "'O cul",
+      "it_meaning": "Il culo",
+      "en_meaning": "The ass",
+      "es_meaning": "El culo",
+      "jp_meaning": "お尻"
+    },
+    "17": {
+      "number": 17,
+      "pronunciation": "Dicessètte",
+      "smorfia_meaning": "'A disgràzie",
+      "it_meaning": "La sfortuna",
+      "en_meaning": "The disgrace",
+      "es_meaning": "La mala suerte",
+      "jp_meaning": "不幸"
+    },
+    "18": {
+      "number": 18,
+      "pronunciation": "Diciòtt",
+      "smorfia_meaning": "'O sàng",
+      "it_meaning": "Il sangue",
+      "en_meaning": "The blood",
+      "es_meaning": "El sangre",
+      "jp_meaning": "血"
+    },
+    "19": {
+      "number": 19,
+      "pronunciation": "Dicennòv",
+      "smorfia_meaning": "'A resàt",
+      "it_meaning": "La risata",
+      "en_meaning": "The laugh",
+      "es_meaning": "La risa",
+      "jp_meaning": "笑い"
+    },
+    "20": {
+      "number": 20,
+      "pronunciation": "Vint",
+      "smorfia_meaning": "'A fèst",
+      "it_meaning": "La festa",
+      "en_meaning": "The party",
+      "es_meaning": "La fiesta",
+      "jp_meaning": "パーティー"
+    },
+    "21": {
+      "number": 21,
+      "pronunciation": "Vintùn",
+      "smorfia_meaning": "'A fèmmena annura",
+      "it_meaning": "La donna nuda",
+      "en_meaning": "The naked woman",
+      "es_meaning": "La mujer desnuda",
+      "jp_meaning": "裸の女性"
+    },
+    "22": {
+      "number": 22,
+      "pronunciation": "Vintiròie",
+      "smorfia_meaning": "'O pazz",
+      "it_meaning": "Il pazzo",
+      "en_meaning": "The madman",
+      "es_meaning": "El loco",
+      "jp_meaning": "狂人"
+    },
+    "23": {
+      "number": 23,
+      "pronunciation": "Vintitré",
+      "smorfia_meaning": "'O scem",
+      "it_meaning": "Lo scemo",
+      "en_meaning": "The stupid",
+      "es_meaning": "El olmo",
+      "jp_meaning": "愚かな"
+    },
+    "24": {
+      "number": 24,
+      "pronunciation": "Vintiquattr",
+      "smorfia_meaning": "'E gguardie",
+      "it_meaning": "I poliziotti",
+      "en_meaning": "The cops",
+      "es_meaning": "Los guardias",
+      "jp_meaning": "警官"
+    },
+    "25": {
+      "number": 25,
+      "pronunciation": "Vinticinck",
+      "smorfia_meaning": "Natale",
+      "it_meaning": "Natale",
+      "en_meaning": "Christmas",
+      "es_meaning": "Navidad",
+      "jp_meaning": "クリスマス"
+    },
+    "26": {
+      "number": 26,
+      "pronunciation": "Vintiseie",
+      "smorfia_meaning": "Nanninella",
+      "it_meaning": "La dolce Anna",
+      "en_meaning": "Little Annie",
+      "es_meaning": "Pequeña Ana",
+      "jp_meaning": "小さなアニー"
+    },
+    "27": {
+      "number": 27,
+      "pronunciation": "Vintisett",
+      "smorfia_meaning": "'O càntero",
+      "it_meaning": "Il vaso da notte",
+      "en_meaning": "Jerry",
+      "es_meaning": "El orinal",
+      "jp_meaning": "チャンバーポット"
+    },
+    "28": {
+      "number": 28,
+      "pronunciation": "Vintòtt",
+      "smorfia_meaning": "'E zizz",
+      "it_meaning": "Le tette",
+      "en_meaning": "Tits",
+      "es_meaning": "Las tetas",
+      "jp_meaning": "おっぱい"
+    },
+    "29": {
+      "number": 29,
+      "pronunciation": "Vintinòv",
+      "smorfia_meaning": "'O pat r' 'e criatùre",
+      "it_meaning": "Il membro",
+      "en_meaning": "Cock",
+      "es_meaning": "La polla",
+      "jp_meaning": "ちんぽ"
+    },
+    "30": {
+      "number": 30,
+      "pronunciation": "Trent",
+      "smorfia_meaning": "'E ppall r''o tenènt",
+      "it_meaning": "Le palle del tenente",
+      "en_meaning": "Lieutenent's balls",
+      "es_meaning": "Las pelotas del teniente",
+      "jp_meaning": "中尉の睾丸"
+    },
+    "31": {
+      "number": 31,
+      "pronunciation": "'Trentùne'",
+      "smorfia_meaning": "'O patron 'e cas",
+      "it_meaning": "Il padrone di casa",
+      "en_meaning": "Landlord",
+      "es_meaning": "El anfitrión",
+      "jp_meaning": "家主"
+    },
+    "32": {
+      "number": 32,
+      "pronunciation": "Trentaròie",
+      "smorfia_meaning": "'O capetón",
+      "it_meaning": "Il capitone",
+      "en_meaning": "Big-headed eel",
+      "es_meaning": "El capiton",
+      "jp_meaning": "うなぎ"
+    },
+    "33": {
+      "number": 33,
+      "pronunciation": "Trentatré",
+      "smorfia_meaning": "L'ann 'e Crist",
+      "it_meaning": "Gli anni di Cristo",
+      "en_meaning": "Christ's age",
+      "es_meaning": "Los años de Cristo",
+      "jp_meaning": "キリストの年齢"
+    },
+    "34": {
+      "number": 34,
+      "pronunciation": "Trentaquàtt",
+      "smorfia_meaning": "'A capa",
+      "it_meaning": "La testa",
+      "en_meaning": "Head",
+      "es_meaning": "La cabeza",
+      "jp_meaning": "頭"
+    },
+    "35": {
+      "number": 35,
+      "pronunciation": "Trentacìnck",
+      "smorfia_meaning": "Aucellùzz",
+      "it_meaning": "La testa",
+      "en_meaning": "Birdie",
+      "es_meaning": "El pajarito",
+      "jp_meaning": "小鳥"
+    },
+    "36": {
+      "number": 36,
+      "pronunciation": "Trentasèie",
+      "smorfia_meaning": "'E ccastagnéll",
+      "it_meaning": "Le nacchere",
+      "en_meaning": "Castanets",
+      "es_meaning": "Las castañas",
+      "jp_meaning": "カスタネット"
+    },
+    "37": {
+      "number": 37,
+      "pronunciation": "Trentasètt",
+      "smorfia_meaning": "'O monaco (il frate)",
+      "it_meaning": "Il monaco",
+      "en_meaning": "The monk",
+      "es_meaning": "El monje",
+      "jp_meaning": "修道士"
+    },
+    "38": {
+      "number": 38,
+      "pronunciation": "Trentòtt",
+      "smorfia_meaning": "'E mmazzate (le botte)",
+      "it_meaning": "Le botte",
+      "en_meaning": "The beatings",
+      "es_meaning": "Los golpes",
+      "jp_meaning": "殴打"
+    },
+    "39": {
+      "number": 39,
+      "pronunciation": "Trentanòv",
+      "smorfia_meaning": "'A funa 'nganna (la corda la collo)",
+      "it_meaning": "La corda al collo",
+      "en_meaning": "The rope around the neck",
+      "es_meaning": "La cuerda al cuello",
+      "jp_meaning": "首に縄"
+    },
+    "40": {
+      "number": 40,
+      "pronunciation": "Quarànt",
+      "smorfia_meaning": "'A papòscia",
+      "it_meaning": "L'ernia inguinale",
+      "en_meaning": "Inguinal hernia",
+      "es_meaning": "Hernia inguinal",
+      "jp_meaning": "鼠蹊ヘルニア"
+    },
+    "41": {
+      "number": 41,
+      "pronunciation": "Quarantùne",
+      "smorfia_meaning": "'O cùrtiello",
+      "it_meaning": "Il coltello",
+      "en_meaning": "The knife",
+      "es_meaning": "El cuchillo",
+      "jp_meaning": "ナイフ"
+    },
+    "42": {
+      "number": 42,
+      "pronunciation": "Quarantaróie",
+      "smorfia_meaning": "'O ccafè",
+      "it_meaning": "Il caffè",
+      "en_meaning": "The coffee",
+      "es_meaning": "El café",
+      "jp_meaning": "コーヒー"
+    },
+    "43": {
+      "number": 43,
+      "pronunciation": "Quarantatré",
+      "smorfia_meaning": "'Onna péreta for 'o balcone",
+      "it_meaning": "La donna al balcone",
+      "en_meaning": "The woman on the balcony",
+      "es_meaning": "La mujer en el balcón",
+      "jp_meaning": "バルコニーの女性"
+    },
+    "44": {
+      "number": 44,
+      "pronunciation": "Quarantaquàtt",
+      "smorfia_meaning": "'E ccancelle",
+      "it_meaning": "Il carcere",
+      "en_meaning": "The prison",
+      "es_meaning": "La cárcel",
+      "jp_meaning": "刑務所"
+    },
+    "45": {
+      "number": 45,
+      "pronunciation": "Quarantacìnck",
+      "smorfia_meaning": "'O vino",
+      "it_meaning": "Il vino",
+      "en_meaning": "The wine",
+      "es_meaning": "El vino",
+      "jp_meaning": "ワイン"
+    },
+    "46": {
+      "number": 46,
+      "pronunciation": "Quarantasèie",
+      "smorfia_meaning": "'E denare",
+      "it_meaning": "I denari",
+      "en_meaning": "The money",
+      "es_meaning": "El dinero",
+      "jp_meaning": "お金"
+    },
+    "47": {
+      "number": 47,
+      "pronunciation": "Quarantasètt",
+      "smorfia_meaning": "'O muorto",
+      "it_meaning": "Il morto",
+      "en_meaning": "The dead man",
+      "es_meaning": "El muerto",
+      "jp_meaning": "死人"
+    },
+    "48": {
+      "number": 48,
+      "pronunciation": "Quarantòtt",
+      "smorfia_meaning": "'O muorto che parla",
+      "it_meaning": "Il morto che parla",
+      "en_meaning": "The talking dead man",
+      "es_meaning": "El muerto que habla",
+      "jp_meaning": "話す死者"
+    },
+    "49": {
+      "number": 49,
+      "pronunciation": "Quarantanòv",
+      "smorfia_meaning": "'O piezzo ' e carne",
+      "it_meaning": "Il pezzo di carne",
+      "en_meaning": "The piece of meat",
+      "es_meaning": "El pedazo de carne",
+      "jp_meaning": "肉の塊"
+    },
+    "50": {
+      "number": 50,
+      "pronunciation": "Cìnquant",
+      "smorfia_meaning": "'O ppane",
+      "it_meaning": "Il pane",
+      "en_meaning": "The bread",
+      "es_meaning": "El pan",
+      "jp_meaning": "パン"
+    },
+    "51": {
+      "number": 51,
+      "pronunciation": "Cinquantùn",
+      "smorfia_meaning": "'O ciardino",
+      "it_meaning": "Il giardino",
+      "en_meaning": "The garden",
+      "es_meaning": "El jardín",
+      "jp_meaning": "庭園"
+    },
+    "52": {
+      "number": 52,
+      "pronunciation": "Cinquantaróie",
+      "smorfia_meaning": "'A mamma",
+      "it_meaning": "La mamma",
+      "en_meaning": "The mother",
+      "es_meaning": "La madre",
+      "jp_meaning": "母親"
+    },
+    "53": {
+      "number": 53,
+      "pronunciation": "Cinquantatré",
+      "smorfia_meaning": "'O viecchio",
+      "it_meaning": "Il vecchio",
+      "en_meaning": "The old man",
+      "es_meaning": "El viejo",
+      "jp_meaning": "老人"
+    },
+    "54": {
+      "number": 54,
+      "pronunciation": "Cinquantaquàtt",
+      "smorfia_meaning": "'O cappiello",
+      "it_meaning": "Il cappello",
+      "en_meaning": "The hat",
+      "es_meaning": "El sombrero",
+      "jp_meaning": "帽子"
+    },
+    "55": {
+      "number": 55,
+      "pronunciation": "Cinquantacìnck",
+      "smorfia_meaning": "'A museca",
+      "it_meaning": "La musica",
+      "en_meaning": "The music",
+      "es_meaning": "La música",
+      "jp_meaning": "音楽"
+    },
+    "56": {
+      "number": 56,
+      "pronunciation": "Cinquantasèie",
+      "smorfia_meaning": "'A caruta",
+      "it_meaning": "La caduta",
+      "en_meaning": "The fall",
+      "es_meaning": "La caída",
+      "jp_meaning": "落下"
+    },
+    "57": {
+      "number": 57,
+      "pronunciation": "Cinquantasétt",
+      "smorfia_meaning": "'O scartellato",
+      "it_meaning": "Il gobbo",
+      "en_meaning": "The hunchback",
+      "es_meaning": "El jorobado",
+      "jp_meaning": "せむし男"
+    },
+    "58": {
+      "number": 58,
+      "pronunciation": "Cinquantòtt",
+      "smorfia_meaning": "'O paccotto",
+      "it_meaning": "L'imbroglio",
+      "en_meaning": "The deception",
+      "es_meaning": "El engaño",
+      "jp_meaning": "欺瞞"
+    },
+    "59": {
+      "number": 59,
+      "pronunciation": "Cinquantanòv",
+      "smorfia_meaning": "'E pile",
+      "it_meaning": "I peli",
+      "en_meaning": "The hair",
+      "es_meaning": "El pelo",
+      "jp_meaning": "毛"
+    },
+    "60": {
+      "number": 60,
+      "pronunciation": "Sìssant",
+      "smorfia_meaning": "Se lamenta",
+      "it_meaning": "Si lamenta",
+      "en_meaning": "He complains",
+      "es_meaning": "Se queja",
+      "jp_meaning": "彼は文句を言う"
+    },
+    "61": {
+      "number": 61,
+      "pronunciation": "Sissantùne",
+      "smorfia_meaning": "'O cacciatore",
+      "it_meaning": "Il cacciatore",
+      "en_meaning": "The hunter",
+      "es_meaning": "El cazador",
+      "jp_meaning": "ハンター"
+    },
+    "62": {
+      "number": 62,
+      "pronunciation": "Sissantaróie",
+      "smorfia_meaning": "'O muorto acciso",
+      "it_meaning": "Il morto ammazzato",
+      "en_meaning": "The murdered man",
+      "es_meaning": "El hombre muerto",
+      "jp_meaning": "殺された男"
+    },
+    "63": {
+      "number": 63,
+      "pronunciation": "Sissantatré",
+      "smorfia_meaning": "'A sposa",
+      "it_meaning": "La sposa",
+      "en_meaning": "The bride",
+      "es_meaning": "La novia",
+      "jp_meaning": "花嫁"
+    },
+    "64": {
+      "number": 64,
+      "pronunciation": "Sissantaquàtt",
+      "smorfia_meaning": "'A sciammeria",
+      "it_meaning": "La marsina",
+      "en_meaning": "The frock coat",
+      "es_meaning": "El frac",
+      "jp_meaning": "燕尾服"
+    },
+    "65": {
+      "number": 65,
+      "pronunciation": "Sissantacìnck",
+      "smorfia_meaning": "'O chianto",
+      "it_meaning": "Il pianto",
+      "en_meaning": "The crying",
+      "es_meaning": "El llanto",
+      "jp_meaning": "泣き声"
+    },
+    "66": {
+      "number": 66,
+      "pronunciation": "Sissantasèie",
+      "smorfia_meaning": "'E ddoie zetelle",
+      "it_meaning": "Le due zitelle",
+      "en_meaning": "The two spinsters",
+      "es_meaning": "Las dos solteronas",
+      "jp_meaning": "二人の老嬢"
+    },
+    "67": {
+      "number": 67,
+      "pronunciation": "Sissantasétt",
+      "smorfia_meaning": "'O totano int''a chitarra",
+      "it_meaning": "Il totano nella chitarra",
+      "en_meaning": "The squid in the guitar",
+      "es_meaning": "El calamar en la guitarra",
+      "jp_meaning": "ギターの中のイカ"
+    },
+    "68": {
+      "number": 68,
+      "pronunciation": "Sissantòtt",
+      "smorfia_meaning": "'A zuppa cotta",
+      "it_meaning": "La zuppa cotta",
+      "en_meaning": "The cooked soup",
+      "es_meaning": "La sopa cocida",
+      "jp_meaning": "煮込んだスープ"
+    },
+    "69": {
+      "number": 69,
+      "pronunciation": "Sissantanòv",
+      "smorfia_meaning": "Sott'e'ncoppo",
+      "it_meaning": "Sottosopra",
+      "en_meaning": "Upside down",
+      "es_meaning": "Al revés",
+      "jp_meaning": "上下逆さま"
+    },
+    "70": {
+      "number": 70,
+      "pronunciation": "Sìttanta",
+      "smorfia_meaning": "'O palazzo",
+      "it_meaning": "Il palazzo",
+      "en_meaning": "The palace",
+      "es_meaning": "El palacio",
+      "jp_meaning": "宮殿"
+    },
+    "71": {
+      "number": 71,
+      "pronunciation": "Sittantùne",
+      "smorfia_meaning": "L'ommo 'e merda",
+      "it_meaning": "Uomo di mmerda",
+      "en_meaning": "Bad man",
+      "es_meaning": "Hombre malo",
+      "jp_meaning": "悪い男"
+    },
+    "72": {
+      "number": 72,
+      "pronunciation": "Sittantaróie",
+      "smorfia_meaning": "'A meraviglia",
+      "it_meaning": "Meraviglia",
+      "en_meaning": "Amazement",
+      "es_meaning": "Asombro",
+      "jp_meaning": "驚き"
+    },
+    "73": {
+      "number": 73,
+      "pronunciation": "Sittantatré",
+      "smorfia_meaning": "'O spitale",
+      "it_meaning": "Ospedale",
+      "en_meaning": "Hospital",
+      "es_meaning": "Hospital",
+      "jp_meaning": "病院"
+    },
+    "74": {
+      "number": 74,
+      "pronunciation": "Sittantaquàtt",
+      "smorfia_meaning": "'A rotta",
+      "it_meaning": "Grotta",
+      "en_meaning": "Cave",
+      "es_meaning": "Cueva",
+      "jp_meaning": "洞窟"
+    },
+    "75": {
+      "number": 75,
+      "pronunciation": "Sittantacìnck",
+      "smorfia_meaning": "Pullecenella",
+      "it_meaning": "Pulcinella",
+      "en_meaning": "Pulcinella",
+      "es_meaning": "Pulcinella",
+      "jp_meaning": "プルチネッラ"
+    },
+    "76": {
+      "number": 76,
+      "pronunciation": "Sittantasèie",
+      "smorfia_meaning": "'A funtana",
+      "it_meaning": "Fontana",
+      "en_meaning": "Fountain",
+      "es_meaning": "Fuente",
+      "jp_meaning": "噴水"
+    },
+    "77": {
+      "number": 77,
+      "pronunciation": "Sittantasètt",
+      "smorfia_meaning": "'E diavule",
+      "it_meaning": "Diavoli",
+      "en_meaning": "Devils",
+      "es_meaning": "Diablos",
+      "jp_meaning": "悪魔たち"
+    },
+    "78": {
+      "number": 78,
+      "pronunciation": "Sittantòtt",
+      "smorfia_meaning": "'A bella figliola",
+      "it_meaning": "Bella ragazza",
+      "en_meaning": "Beautiful girl",
+      "es_meaning": "Bella chica",
+      "jp_meaning": "美しい女の子"
+    },
+    "79": {
+      "number": 79,
+      "pronunciation": "Sittantanòv",
+      "smorfia_meaning": "'O mariuolo",
+      "it_meaning": "Ladro",
+      "en_meaning": "Thief",
+      "es_meaning": "Ladrón",
+      "jp_meaning": "泥棒"
+    },
+    "80": {
+      "number": 80,
+      "pronunciation": "Uttànt",
+      "smorfia_meaning": "'A vocca (la bocca)",
+      "it_meaning": "La bocca",
+      "en_meaning": "The mouth",
+      "es_meaning": "La boca",
+      "jp_meaning": "口"
+    },
+    "81": {
+      "number": 81,
+      "pronunciation": "Ottantùn",
+      "smorfia_meaning": "'E sciure (i fiori)",
+      "it_meaning": "I fiori",
+      "en_meaning": "The flowers",
+      "es_meaning": "Las flores",
+      "jp_meaning": "花"
+    },
+    "82": {
+      "number": 82,
+      "pronunciation": "Ottantaróie",
+      "smorfia_meaning": "'A tavula 'mbandita (la tavola imbandita)",
+      "it_meaning": "La tavola imbandita",
+      "en_meaning": "The laid table",
+      "es_meaning": "La mesa puesta",
+      "jp_meaning": "並べられたテーブル"
+    },
+    "83": {
+      "number": 83,
+      "pronunciation": "Ottantatre",
+      "smorfia_meaning": "'O maletiempo (il maltempo)",
+      "it_meaning": "Il maltempo",
+      "en_meaning": "The bad weather",
+      "es_meaning": "El mal tiempo",
+      "jp_meaning": "悪天候"
+    },
+    "84": {
+      "number": 84,
+      "pronunciation": "Ottantaquàtt",
+      "smorfia_meaning": "'A cchiesa ( la chiesa)",
+      "it_meaning": "La chiesa",
+      "en_meaning": "The church",
+      "es_meaning": "La iglesia",
+      "jp_meaning": "教会"
+    },
+    "85": {
+      "number": 85,
+      "pronunciation": "Ottantacìnk",
+      "smorfia_meaning": "Ll'aneme 'o priatorio",
+      "it_meaning": "Le anime del purgatorio",
+      "en_meaning": "The souls of purgatory",
+      "es_meaning": "Las almas del purgatorio",
+      "jp_meaning": "煉獄の魂"
+    },
+    "86": {
+      "number": 86,
+      "pronunciation": "Ottantasèie",
+      "smorfia_meaning": "'A puteca (il negozio)",
+      "it_meaning": "Il negozio",
+      "en_meaning": "The shop",
+      "es_meaning": "La tienda",
+      "jp_meaning": "店"
+    },
+    "87": {
+      "number": 87,
+      "pronunciation": "Ottantasètt",
+      "smorfia_meaning": "'E perucchie (i pidocchi)",
+      "it_meaning": "I pidocchi",
+      "en_meaning": "The lice",
+      "es_meaning": "Los piojos",
+      "jp_meaning": "シラミ"
+    },
+    "88": {
+      "number": 88,
+      "pronunciation": "Ottantòtt",
+      "smorfia_meaning": "'E casecavalle (i caciocavalli)",
+      "it_meaning": "I caciocavalli",
+      "en_meaning": "The caciocavalli",
+      "es_meaning": "Los caciocavalli",
+      "jp_meaning": "カチョカヴァッロ"
+    },
+
+    "89": {
+      "number": 89,
+      "pronunciation": "Ottantanòv",
+      "smorfia_meaning": "'A vecchietta",
+      "it_meaning": "La vecchietta",
+      "en_meaning": "The old woman",
+      "es_meaning": "La viejecita",
+      "jp_meaning": "老婆婆"
+    },
+    "90": {
+      "number": 90,
+      "pronunciation": "Novànt",
+      "smorfia_meaning": "'A paura",
+      "it_meaning": "La paura",
+      "en_meaning": "The fear",
+      "es_meaning": "El miedo",
+      "jp_meaning": "恐怖"
     }
+  }
 }
