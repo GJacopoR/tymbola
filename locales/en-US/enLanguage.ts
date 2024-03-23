@@ -2,8 +2,8 @@ import { itLanguage } from "../it-IT/itLanguage";
 
 export const enLanguage = {
     home: {
-        callerButton: "Caller",
-        playerButton: "Player",
+        callerButton: "Caller \n (who calls)",
+        playerButton: "Player \n (who checks)",
         ongoingGameMessage: "There is a {{PLAYER_TYPE}} game currently in progress.",
         ongoingGameSubmessage: "Any unsaved cards will be lost if you end it.",
         endGameButton: "End game",

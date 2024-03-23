@@ -2,8 +2,8 @@ import { itLanguage } from "../it-IT/itLanguage";
 
 export const jaLanguage = {
     home: {
-        callerButton: "呼び出し役",
-        playerButton: "プレイヤー",
+        callerButton: "呼び出し役 \n (電話をかける人)",
+        playerButton: "プレイヤー \n (得点する人)",
         ongoingGameMessage: "現在、{{PLAYER_TYPE}} ゲームが進行中です。",
         ongoingGameSubmessage: "終了すると、保存されていないカードはすべて失われます。",
         endGameButton: "ゲームを終了する",
@@ -27,7 +27,7 @@ export const jaLanguage = {
             saveSubmessage: "以前に保存されたカードは上書きされます。",
             saveButton: "はい、保存する",
         },
-        winnerModeMessage: "本当にビンゴですか？"
+        winnerModeMessage: "本当にトムボラですか？"
     },
     commons: {
         no: "いいえ",

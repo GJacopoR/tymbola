@@ -2,8 +2,8 @@ import { itLanguage } from "../it-IT/itLanguage";
 
 export const esLanguage = {
     home: {
-        callerButton: "Guardián",
-        playerButton: "Jugador",
+        callerButton: "Guardián \n (que llama)",
+        playerButton: "Jugador \n (que notas)",
         ongoingGameMessage: "Hay una partida de {{PLAYER_TYPE}} en curso.",
         ongoingGameSubmessage: "Si la finalizas, se perderán las tarjetas no guardadas.",
         endGameButton: "Finalizar partida",
@@ -27,7 +27,7 @@ export const esLanguage = {
             saveSubmessage: "Se sobrescribirán las tarjetas guardadas anteriormente.",
             saveButton: "Sí, guardar",
         },
-        winnerModeMessage: "¿De verdad has hecho Tombola?"
+        winnerModeMessage: "¿De verdad hay Tombola?"
     },
     commons: {
         no: "No",
