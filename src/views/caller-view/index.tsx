@@ -5,36 +5,18 @@ import * as modal from "../../slice/modal-slice";
 import { useAppDispatch, useAppSelector } from "../../slice/hooks";
 import { useEffect } from "react";
 import { useIsFirstRender } from "../../assets/useIsFirstRender";
+import { useTranslation } from "react-i18next";
+import { Languages, languageResources } from "src/i18n";
 
 function CallerView() {
-  const utterance: SpeechSynthesisUtterance = new SpeechSynthesisUtterance();
-  if (
-    window.speechSynthesis.getVoices().find((voice) => voice.name === "Luca")
-  ) {
-    utterance.voice =
-      window.speechSynthesis
-        .getVoices()
-        .find((voice) => voice.name === "Luca") || null;
-  } else {
-    utterance.voice =
-      window.speechSynthesis
-        .getVoices()
-        .find((voice) => voice.lang === "it-IT") || null;
-  } // index 21 for Luca, 57 for Google italiano
-  utterance.rate = utterance.voice?.name === "Luca" ? 0.25 : 0.9;
-  utterance.pitch = 1;
-  utterance.volume = 1;
-
-  console.log(window.speechSynthesis.getVoices());
+  const { i18n } = useTranslation();
 
   const dispatch = useAppDispatch();
   const isFirstRender = useIsFirstRender();
 
   const history: caller.TombolaNumber[] = useAppSelector(caller.selectHistory);
   const isSmorfiaMode: boolean = useAppSelector(caller.selectIsSmorfiaMode);
-  const repository: caller.TombolaNumber[] = useAppSelector(
-    caller.selectRepository
-  );
+  const repository: caller.TombolaNumber[] = useAppSelector(caller.selectRepository);
 
   const lastTombolaNumber: caller.TombolaNumber = history[history.length - 1];
 
@@ -47,17 +29,67 @@ function CallerView() {
     [66, 67, 68, 69, 70, 76, 77, 78, 79, 80, 86, 87, 88, 89, 90],
   ];
 
-  const callNumber = (number: string): void => {
-    utterance.text = number;
+  const currentLanguage: Languages = i18n.language as Languages;
 
-    window.speechSynthesis.speak(utterance);
+  const currentMeaning: caller.TombolaNumberTypes = (currentLanguage +
+    "_meaning") as caller.TombolaNumberTypes;
+
+  const baseUtterance: SpeechSynthesisUtterance = new SpeechSynthesisUtterance();
+  const localizedUtterance: SpeechSynthesisUtterance = new SpeechSynthesisUtterance();
+
+  localizedUtterance.voice =
+    window.speechSynthesis.getVoices().find((voice) => voice.lang.includes(currentLanguage)) ||
+    null;
+
+  // yes, this because i really appreciate Luca's voice
+  if (window.speechSynthesis.getVoices().find((voice) => voice.name === "Luca")) {
+    baseUtterance.voice =
+      window.speechSynthesis.getVoices().find((voice) => voice.name === "Luca") ||
+      window.speechSynthesis.getVoices().find((voice) => voice.lang.includes("it")) ||
+      null;
+
+    if (currentLanguage === "it") {
+      localizedUtterance.voice =
+        window.speechSynthesis.getVoices().find((voice) => voice.name === "Luca") ||
+        window.speechSynthesis.getVoices().find((voice) => voice.lang.includes("it")) ||
+        null;
+    }
+  }
+
+  baseUtterance.rate = baseUtterance.voice?.name === "Luca" ? 0.25 : 0.9;
+  baseUtterance.pitch = 1;
+  baseUtterance.volume = 1;
+
+  localizedUtterance.rate = localizedUtterance.voice?.name === "Luca" ? 0.25 : 0.9;
+  localizedUtterance.pitch = 1;
+  localizedUtterance.volume = 1;
+  localizedUtterance.lang = languageResources[currentLanguage].label.substring(0, 5);
+
+  const callNumber = (number: string, smorfia?: string, meaning?: string): void => {
+    localizedUtterance.text = number;
+    window.speechSynthesis.speak(localizedUtterance);
+
+    if (smorfia && meaning) {
+      baseUtterance.text = smorfia;
+      window.speechSynthesis.speak(baseUtterance);
+      localizedUtterance.text = meaning;
+      window.speechSynthesis.speak(localizedUtterance);
+    }
   };
 
   useEffect(() => {
     if (lastTombolaNumber && !isFirstRender) {
-      const string = String(lastTombolaNumber.number);
-      const smorfiaString = `${lastTombolaNumber.pronunciation},  ${lastTombolaNumber.smorfia_meaning}`;
-      history.length && callNumber(isSmorfiaMode ? smorfiaString : string);
+      const baseNumberString: string = String(lastTombolaNumber.number);
+
+      const smorfiaString: string = `${
+        currentLanguage === "it" ? lastTombolaNumber.pronunciation : ""
+      },  
+      ${lastTombolaNumber.smorfia_meaning}`;
+
+      const meaningString: string = String(lastTombolaNumber[currentMeaning]);
+      history.length && isSmorfiaMode
+        ? callNumber(baseNumberString, smorfiaString, meaningString)
+        : callNumber(baseNumberString);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
@@ -67,16 +99,18 @@ function CallerView() {
   };
 
   const handleRepeat = (): void => {
-    const repeatedString: string =
+    const baseNumberString: string =
       lastTombolaNumber.number <= 9
-        ? `${lastTombolaNumber.number}, ${lastTombolaNumber.smorfia_meaning}`
-        : `${lastTombolaNumber.number}, ${
-            String(lastTombolaNumber.number)[0]
-          }, ${String(lastTombolaNumber.number)[1]}, ${
-            lastTombolaNumber.smorfia_meaning
+        ? String(lastTombolaNumber.number)
+        : `${lastTombolaNumber.number}, ${String(lastTombolaNumber.number)[0]}, ${
+            String(lastTombolaNumber.number)[1]
           }`;
 
-    callNumber(repeatedString);
+    const smorfiaString: string = lastTombolaNumber.smorfia_meaning;
+
+    const meaningString: string = lastTombolaNumber[currentMeaning] as string;
+
+    callNumber(baseNumberString, smorfiaString, meaningString);
   };
 
   const handleModalOpen = (): void => {
