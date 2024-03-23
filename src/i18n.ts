@@ -30,6 +30,8 @@ export const languageResources = {
 
 export type Languages = keyof typeof languageResources;
 
+export type AvailableLanguage = typeof languageResources.it;
+
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({

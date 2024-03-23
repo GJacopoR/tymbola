@@ -1,21 +1,27 @@
 import { useTranslation } from "react-i18next";
-import { languageResources } from "src/i18n";
+import classes from "./language-selector.module.scss";
+import { LanguageSelectorProps } from ".";
+import { ChangeEventHandler } from "react";
+import { AvailableLanguage } from "src/i18n";
 
-function LanguageSelector() {
+interface LanguageSelectorComponentProps extends LanguageSelectorProps {
+  availableLanguages: [string, AvailableLanguage][];
+  handleLanguageChange: ChangeEventHandler<HTMLSelectElement>;
+}
+
+function LanguageSelector({
+  availableLanguages,
+  className,
+  handleLanguageChange,
+}: LanguageSelectorComponentProps) {
   const { i18n } = useTranslation();
-
-  const handleLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const lang = e.target.value;
-    i18n.changeLanguage(lang);
-  };
-
-  const availableLanguages = Object.entries(languageResources);
 
   return (
     <select
-      name="languageSelect"
+      className={`${classes.select} ${className && className}`}
       id="languageSelect"
-      onChange={handleLangChange}
+      name="languageSelect"
+      onChange={handleLanguageChange}
       value={i18n.language}
     >
       {availableLanguages.map((language) => (
