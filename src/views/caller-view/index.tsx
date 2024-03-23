@@ -39,14 +39,13 @@ function CallerView() {
 
   localizedUtterance.voice =
     window.speechSynthesis.getVoices().find((voice) => voice.lang.includes(currentLanguage)) ||
+    window.speechSynthesis.getVoices().find((voice) => voice.lang.includes("it")) ||
     null;
 
-  // yes, this because i really appreciate Luca's voice
+  // yes, this because I really appreciate Luca's voice
   if (window.speechSynthesis.getVoices().find((voice) => voice.name === "Luca")) {
     baseUtterance.voice =
-      window.speechSynthesis.getVoices().find((voice) => voice.name === "Luca") ||
-      window.speechSynthesis.getVoices().find((voice) => voice.lang.includes("it")) ||
-      null;
+      window.speechSynthesis.getVoices().find((voice) => voice.name === "Luca") || null;
 
     if (currentLanguage === "it") {
       localizedUtterance.voice =
@@ -54,11 +53,15 @@ function CallerView() {
         window.speechSynthesis.getVoices().find((voice) => voice.lang.includes("it")) ||
         null;
     }
+  } else {
+    baseUtterance.voice =
+      window.speechSynthesis.getVoices().find((voice) => voice.lang.includes("it")) || null;
   }
 
   baseUtterance.rate = baseUtterance.voice?.name === "Luca" ? 0.25 : 0.9;
   baseUtterance.pitch = 1;
   baseUtterance.volume = 1;
+  baseUtterance.lang = "it-IT";
 
   localizedUtterance.rate = localizedUtterance.voice?.name === "Luca" ? 0.25 : 0.9;
   localizedUtterance.pitch = 1;
@@ -82,8 +85,8 @@ function CallerView() {
       const baseNumberString: string = String(lastTombolaNumber.number);
 
       const smorfiaString: string = `${
-        currentLanguage === "it" ? lastTombolaNumber.pronunciation : ""
-      },  
+        currentLanguage === "it" ? lastTombolaNumber.pronunciation + ", " : ""
+      }  
       ${lastTombolaNumber.smorfia_meaning}`;
 
       const meaningString: string = String(lastTombolaNumber[currentMeaning]);
