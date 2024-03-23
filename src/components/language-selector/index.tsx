@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { AvailableLanguage, languageResources } from "src/i18n";
 
 export interface LanguageSelectorProps {
-  className: CSSProperties;
+  className?: CSSProperties;
 }
 
 function LanguageSelector({ className }: LanguageSelectorProps) {
