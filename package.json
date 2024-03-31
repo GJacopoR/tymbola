@@ -6,6 +6,7 @@
   "type": "module",
   "author": "GJacopoR",
   "scripts": {
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
