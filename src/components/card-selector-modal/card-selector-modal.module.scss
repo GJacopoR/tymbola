@@ -20,7 +20,7 @@
     .modal {
         position: relative;
         background-color: darkred;
-        // background-image: url("../../../public/assets/tablecloth-texture-psd.gif");
+        // background-image: url("../../../resources/assets/tablecloth-texture-psd.gif");
         // background-repeat: repeat;
         border: solid 3px var(--brown-border);
         border-radius: 10px;
@@ -100,7 +100,7 @@
         width: 100%;
         height: 100%;
         // filter: contrast(0.8);
-        background-image: url("../../../public/assets/tablecloth-texture-psd.gif");
+        background-image: url("../../../resources/assets/tablecloth-texture-psd.gif");
         background-repeat: repeat;
         background-position: 50% 0;
         background-size: cover;

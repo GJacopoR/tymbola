@@ -1,9 +1,9 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { enLanguage } from "public/locales/en-US/enLanguage";
-import { esLanguage } from "public/locales/es-ES/esLanguage";
-import { itLanguage } from "public/locales/it-IT/itLanguage";
-import { jaLanguage } from "public/locales/ja-JP/jpLanguage";
+import { enLanguage } from "resources/locales/en-US/enLanguage";
+import { esLanguage } from "resources/locales/es-ES/esLanguage";
+import { itLanguage } from "resources/locales/it-IT/itLanguage";
+import { jaLanguage } from "resources/locales/ja-JP/jpLanguage";
 
 // the translations
 // (tip move them in a JSON file and import them,

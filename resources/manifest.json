@@ -16,19 +16,19 @@
   "description": "Clear, fast and easy-to-use Progressive Web Application to play Tombola.",
   "icons": [
     {
-      "src": "assets/Taglialatombola_logo_xs_144.png",
+      "src": "Taglialatombola_logo_xs_144.png",
       "type": "image/png",
       "sizes": "144x144",
-      "purpose": ["maskable", "any"]
+      "purpose": "any"
     },
     {
-      "src": "assets/Taglialatombola_logo_piccolo.png",
+      "src": "Taglialatombola_logo_piccolo.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "assets/Taglialatombola_logo_grande.png",
+      "src": "Taglialatombola_logo_grande.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
