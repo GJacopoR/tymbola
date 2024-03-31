@@ -2,7 +2,7 @@
   "name": "tymbola",
   "homepage": "http://gjacopor.github.io/tymbola",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
