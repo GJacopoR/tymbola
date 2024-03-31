@@ -1,9 +1,12 @@
 .bodyContainer {
-    height: 77vh;
+    height: 75vh;
     display: flex;
     flex-direction: column-reverse;
+    align-items: center;
 
     .link{
+        display: block;
+        width: max-content;
         text-decoration: none;
         color: inherit;
     }

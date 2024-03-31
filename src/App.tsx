@@ -6,6 +6,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import PlayerView from "./views/player-view";
 import { AnimatePresence } from "framer-motion";
 import { Suspense } from "react";
+import Loader from "./components/loader";
 
 export const SMALL_DESKTOP_MIN_WIDTH = 1024;
 
@@ -13,7 +14,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <Suspense fallback="loading">
+    <Suspense fallback={<Loader />}>
       <AnimatePresence mode="wait">
         <Routes key={location.pathname} location={location}>
           <Route index path="/tymbola/" element={<Home />} />

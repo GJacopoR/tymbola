@@ -1,0 +1,18 @@
+.panariello {
+    height: 5rem;
+    width: 5rem;
+    // animation-name: shake;
+    // animation-duration: 2.5s;
+    // animation-iteration-count: infinite;
+    animation: 2.5s shake infinite;
+}
+
+@keyframes shake {
+    0%   {transform: rotate(-20deg);}
+    10%  {transform: rotate(30deg);}
+    20%  {transform: rotate(-20deg);}
+    30%  {transform: rotate(30deg);}
+    40%  {transform: rotate(-20deg);}
+    80%  {transform: rotate(140deg);}
+    100%  {transform: rotate(-20deg);}
+}

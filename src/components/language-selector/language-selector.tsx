@@ -17,17 +17,23 @@ function LanguageSelector({
   const { i18n } = useTranslation();
 
   return (
-    <select
-      className={`${classes.select} ${className && className}`}
-      id="languageSelect"
-      name="languageSelect"
-      onChange={handleLanguageChange}
-      value={i18n.language}
-    >
-      {availableLanguages.map((language) => (
-        <option value={language[0]}>{language[1].label}</option>
-      ))}
-    </select>
+    <form>
+      <label htmlFor="languageSelect"></label>
+      <select
+        aria-label="Language select"
+        className={`${classes.select} ${className && className}`}
+        id="languageSelect"
+        name="languageSelect"
+        onChange={handleLanguageChange}
+        value={i18n.language}
+      >
+        {availableLanguages.map((language, i) => (
+          <option value={language[0]} key={`${language}_${i}`}>
+            {language[1].label}
+          </option>
+        ))}
+      </select>
+    </form>
   );
 }
 

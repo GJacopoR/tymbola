@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import classes from "./home.module.scss";
 import CardSelectorModal from "../../components/card-selector-modal";
 import Button from "src/components/button";
-import Header from "../../components/header";
+// import Header from "../../components/header";
 import PageTransition from "../../assets/page-transition";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "src/components/language-selector";
+import { lazy, LazyExoticComponent, Suspense } from "react";
+import Loader from "src/components/loader";
 
 interface HomeComponentProps {
   isCallerGameOngoing: boolean;
@@ -16,6 +18,8 @@ interface HomeComponentProps {
   onGameReturn: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onModalOpen: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
+
+const Header: LazyExoticComponent<() => JSX.Element> = lazy(() => import("src/components/header"));
 
 function Home({
   isCallerGameOngoing,
@@ -30,9 +34,10 @@ function Home({
   return (
     <PageTransition>
       <main>
-        {/* <Route path="users/:id" element={<Users />} /> */}
         <header>
-          <Header />
+          <Suspense fallback={<Loader />}>
+            <Header />
+          </Suspense>
         </header>
 
         <main className={classes.bodyContainer}>
@@ -68,11 +73,7 @@ function Home({
                   transition={{ duration: 0.3 }}
                 >
                   <header>
-                    <svg
-                      fill="#ff0000"
-                      viewBox="0 0 16 16"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg fill="#ff0000" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                       <g
                         id="SVGRepo_tracerCarrier"
@@ -97,18 +98,14 @@ function Home({
                     </h4>
 
                     {!isCallerGameOngoing && (
-                      <p className={classes.alertSubTitle}>
-                        {t("home.ongoingGameSubmessage")}
-                      </p>
+                      <p className={classes.alertSubTitle}>{t("home.ongoingGameSubmessage")}</p>
                     )}
                   </header>
 
                   <Button
                     className={classes.button}
                     label={t("home.endGameButton")}
-                    onClick={
-                      isCallerGameOngoing ? onEndCallerGame : onEndPlayerGame
-                    }
+                    onClick={isCallerGameOngoing ? onEndCallerGame : onEndPlayerGame}
                   />
                   <Button
                     className={classes.button}
