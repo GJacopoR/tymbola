@@ -11,18 +11,22 @@ import { jaLanguage } from "resources/locales/ja-JP/jpLanguage";
 export const languageResources = {
   en: {
     // emoji: '',
+    ISOcode: "en-US",
     label: "en-US: English (USA)",
     translation: enLanguage,
   },
   es: {
+    ISOcode: "es-ES",
     label: "es-ES: Espanol",
     translation: esLanguage,
   },
   it: {
+    ISOcode: "it-IT",
     label: "it-IT: Italiano",
     translation: itLanguage,
   },
   jp: {
+    ISOcode: "ja-JP",
     label: "ja-JP: 日本語",
     translation: jaLanguage,
   },
