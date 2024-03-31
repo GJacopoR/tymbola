@@ -8,8 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       src: "/src",
-      resources: "/resources",
-      asserts: "/resources/assets",
+      public: "/public",
     },
   },
 });

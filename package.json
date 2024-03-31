@@ -2,10 +2,10 @@
   "name": "tymbola",
   "homepage": "http://gjacopor.github.io/tymbola",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
+  "author": "GJacopoR",
   "scripts": {
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
